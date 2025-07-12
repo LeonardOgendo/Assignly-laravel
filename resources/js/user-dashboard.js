@@ -28,6 +28,3 @@ export default function startDashboardApp() {
         router,
     });
 }
-
-// Call it immediately when the script is loaded
-startDashboardApp();
