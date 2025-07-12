@@ -7,6 +7,10 @@ if (window.location.pathname.startsWith('/dashboard/user')) {
     import('./user-dashboard').then(({ default: startDashboardApp }) => {
         startDashboardApp();
     });
+} else if (window.location.pathname.startsWith('/dashboard/admin')) {
+    import('./admin-dashboard').then(({ default: startAdminApp }) => {
+        startAdminApp();
+    });
 } else {
     // Render LandingPage component for '/' or any other non-dashboard routes
     new Vue({
