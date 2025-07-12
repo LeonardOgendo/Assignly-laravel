@@ -29,6 +29,9 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
+
+            // To avoid null roles in seeded users
+            'role' => 'user', // default role
         ];
     }
 
