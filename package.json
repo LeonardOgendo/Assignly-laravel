@@ -20,5 +20,8 @@
         "vite": "^6.2.4",
         "vue": "^2.7.16",
         "vue-template-compiler": "^2.7.16"
+    },
+    "dependencies": {
+        "vue-router": "^3.6.5"
     }
 }
