@@ -1,20 +1,20 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+// routes/web.php
+use App\Http\Middleware\RoleMiddleware;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('landing');
-});
+Route::get('/', fn () => view('landing'));
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// USER dashboard
+Route::get('/dashboard/user', fn () => view('user.dashboard'))
+     ->middleware(['auth', RoleMiddleware::class . ':user'])
+     ->name('dashboard.user');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// ADMIN dashboard
+Route::get('/dashboard/admin', fn () => view('admin.dashboard'))
+     ->middleware(['auth', RoleMiddleware::class . ':admin'])
+     ->name('dashboard.admin');
 
 require __DIR__.'/auth.php';
+
