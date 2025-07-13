@@ -1,32 +1,36 @@
+<!-- TaskManagerView.vue -->
 <template>
-  <div>
-    <h2 class="text-2xl font-semibold mb-4">Task Manager</h2>
-    <p class="mb-4 text-sm text-gray-600">Assign, review, and update tasks.</p>
+  <div class="p-6">
+    <h2 class="text-2xl font-bold mb-2">Manage Tasks</h2>
+    <p class="text-gray-700 mb-6">View, Assign and Update Tasks</p>
 
-    <!-- Placeholder Task Table -->
-    <div class="overflow-x-auto bg-white shadow rounded">
-      <table class="w-full table-auto">
-        <thead class="bg-gray-100 text-gray-700 text-left">
-          <tr>
-            <th class="p-3">Task</th>
-            <th class="p-3">Assigned To</th>
-            <th class="p-3">Status</th>
-            <th class="p-3">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="border-t">
-            <td class="p-3">Review documentation</td>
-            <td class="p-3">Alice</td>
-            <td class="p-3">In Progress</td>
-            <td class="p-3">
-              <button class="text-sm text-blue-600 hover:underline">Edit</button>
-              <button class="ml-2 text-sm text-red-600 hover:underline">Delete</button>
-            </td>
-          </tr>
-          <!-- Add more rows dynamically -->
-        </tbody>
-      </table>
+    <div class="flex space-x-4">
+      <a
+        href="/dashboard/admin/tasks"
+        class="flex-1 bg-white shadow rounded-lg p-6 text-center hover:bg-gray-100 transition"
+      >
+        <h3 class="text-lg font-semibold">View Tasks</h3>
+      </a>
+
+      <a
+        href="/dashboard/admin/tasks/create"
+        class="flex-1 bg-white shadow rounded-lg p-6 text-center hover:bg-gray-100 transition"
+      >
+        <h3 class="text-lg font-semibold">Assign Task</h3>
+      </a>
+
+      <a
+        href="/dashboard/admin/tasks"
+        class="flex-1 bg-white shadow rounded-lg p-6 text-center hover:bg-gray-100 transition"
+      >
+        <h3 class="text-lg font-semibold">Update Tasks</h3>
+      </a>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'TaskManagerView',
+};
+</script>
