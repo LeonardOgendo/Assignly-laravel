@@ -44,7 +44,7 @@
 
 <script>
 export default {
-  name: 'TaskIndexView',
+  name: 'TasListView',
   data() {
     return {
       tasks: [],

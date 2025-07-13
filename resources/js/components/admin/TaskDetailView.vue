@@ -45,7 +45,7 @@
 
 <script>
 export default {
-  name: 'TaskShowView',
+  name: 'TaskDetailView',
   data() {
     return {
       task: {},
