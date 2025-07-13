@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
+use App\Http\Requests\UpdateTaskStatusRequest;
 use App\Notifications\TaskAssigned;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -100,6 +101,8 @@ class TaskController extends Controller
         ]);
     }
 
+
+
     /**
      * Delete a task
      */
@@ -128,6 +131,19 @@ class TaskController extends Controller
             ->get();
 
         return response()->json($tasks);
+    }
+
+     // Update task status: 'user'
+    public function updateStatus(UpdateTaskStatusRequest $request, Task $task)
+    {
+        $this->authorize('updateStatus', $task);
+
+        $task->update($request->validated());
+
+        return response()->json([
+            'message' => 'Status updated.',
+            'task'    => $task->fresh(),      // reflect new status
+        ]);
     }
 
 

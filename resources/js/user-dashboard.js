@@ -7,6 +7,7 @@ import TasksView from './components/user/TasksView.vue';
 import NotificationsView from './components/user/NotificationsView.vue';
 import TasksActiveView from './components/user/TasksActiveView.vue';
 import TasksCompletedView from './components/user/TasksCompletedView.vue';
+import TaskDetailView from './components/user/TaskDetailView.vue';
 
 Vue.use(VueRouter);
 
@@ -19,6 +20,8 @@ const routes = [
             { path: 'tasks', component: TasksView },
             { path: 'tasks/active', component: TasksActiveView },
             { path: 'tasks/completed', component: TasksCompletedView },
+            { path: 'tasks/:id', component: TaskDetailView, props: true },
+
             { path: 'notifications', component: NotificationsView },
         ],
     },

@@ -31,4 +31,11 @@ class TaskPolicy
     {
         return $user->role === 'admin' || $user->id === $task->user_id;
     }
+
+    public function updateStatus(User $user, Task $task)
+{
+    // Allow only the assignee or an admin
+    return $user->id === $task->user_id || $user->role === 'admin';
+}
+
 }

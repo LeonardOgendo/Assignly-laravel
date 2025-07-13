@@ -14,14 +14,16 @@ Route::get('/', fn () => view('landing'));
 Route::middleware(['auth', RoleMiddleware::class . ':user'])->group(function () {
     Route::get('/dashboard/user', fn () => view('user.dashboard'))->name('dashboard.user');
 
-    // JSON endpoint: fetch tasks for logged-in user
+    // JSON endpoints: logged-in user tasks
     Route::get('/dashboard/user/tasks/json', [TaskController::class, 'userTasks']);
+    Route::get('/dashboard/user/tasks/json/{task}', [TaskController::class, 'show']);
+    Route::put('/dashboard/user/tasks/json/{task}',     [TaskController::class, 'updateStatus']);
 
-
-    // Catch-all for Vue routes under /dashboard/user/*
+    // Catch all routes
     Route::get('/dashboard/user/{any}', fn () => view('user.dashboard'))
         ->where('any', '.*');
 });
+
 
 // ADMIN DASHBOARD
 

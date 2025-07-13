@@ -1,4 +1,4 @@
-<!-- resources/js/components/user/TasksActive.vue -->
+<!-- resources/js/components/user/TasksActiveView.vue -->
 <template>
   <div class="p-6 space-y-4">
     <h2 class="text-2xl font-bold">Active Tasks</h2>
@@ -10,17 +10,23 @@
       <li
         v-for="task in tasks"
         :key="task.id"
-        class="bg-white p-4 rounded-md shadow flex justify-between items-center"
       >
-        <div>
-          <p class="font-medium">{{ task.title }}</p>
-          <p class="text-xs text-gray-500">Due by {{ formatDate(task.deadline) }}</p>
-        </div>
-        <span
-          class="text-xs px-2 py-1 rounded bg-yellow-100 text-yellow-800 uppercase tracking-wide"
+        <router-link
+          :to="`/dashboard/user/tasks/${task.id}`"
+          class="block bg-white p-4 rounded-md shadow hover:bg-gray-100 transition"
         >
-          {{ task.status.replace('_', ' ') }}
-        </span>
+          <div class="flex justify-between items-center">
+            <div>
+              <p class="font-medium">{{ task.title }}</p>
+              <p class="text-xs text-gray-500">Due by {{ formatDate(task.deadline) }}</p>
+            </div>
+            <span
+              class="text-xs px-2 py-1 rounded bg-yellow-100 text-yellow-800 uppercase tracking-wide"
+            >
+              {{ task.status.replace('_', ' ') }}
+            </span>
+          </div>
+        </router-link>
       </li>
     </ul>
   </div>
