@@ -3,17 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
 use App\Http\Middleware\RoleMiddleware;
+use App\Http\Controllers\UserController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-*/
 
 // Landing Page
 Route::get('/', fn () => view('landing'));
 
-// ================= USER DASHBOARD =================
+// USER DASHBOARD
 
 Route::middleware(['auth', RoleMiddleware::class . ':user'])->group(function () {
     Route::get('/dashboard/user', fn () => view('user.dashboard'))->name('dashboard.user');
@@ -23,7 +19,7 @@ Route::middleware(['auth', RoleMiddleware::class . ':user'])->group(function () 
         ->where('any', '.*');
 });
 
-// ================= ADMIN DASHBOARD =================
+// ADMIN DASHBOARD
 
 Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function () {
     
@@ -47,6 +43,9 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function ()
     Route::get('/dashboard/admin/users/json', function () {
         return \App\Models\User::where('role', 'user')->select('id', 'name', 'email')->get();
     });
+
+    // Fetch all users
+    Route::get('/admin/users/list', [UserController::class, 'fetchAll'])->name('admin.users.list');
 });
 
 

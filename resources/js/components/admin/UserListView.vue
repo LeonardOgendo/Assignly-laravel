@@ -54,16 +54,22 @@ export default {
   name: 'UserListView',
   data() {
     return {
-      users: [
-        { id: 1, name: 'Leonard Fish', email: 'leonard@example.com', role: 'admin' },
-        { id: 2, name: 'Jane Doe', email: 'jane@example.com', role: 'user' },
-        // Replace with API-fetched users later
-      ],
+      users: [],
     };
   },
+  mounted() {
+    this.fetchUsers();
+  },
   methods: {
+    async fetchUsers() {
+      try {
+        const response = await axios.get('/admin/users/list');
+        this.users = response.data;
+      } catch (error) {
+        console.error('Error fetching users:', error);
+      }
+    },
     handleDelete(userId) {
-      // TODO: Later make an Axios DELETE request here
       const confirmed = confirm('Are you sure you want to delete this user?');
       if (confirmed) {
         this.users = this.users.filter((user) => user.id !== userId);

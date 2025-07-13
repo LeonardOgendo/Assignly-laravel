@@ -7,7 +7,7 @@
     
     <title>{{ config('app.name', 'Task Manager') }}</title>
 
-    <!-- CSRF Token for Vue logout -->
+    <!-- CSRF Token-->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Tailwind + Vue (via Vite) -->
