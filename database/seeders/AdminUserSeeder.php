@@ -11,10 +11,11 @@ class AdminUserSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'name' => 'System Admin',
-            'email' => 'admin@cytonn.com',
-            'password' => Hash::make('EternalBlue'),
-            'role' => 'admin', // Make sure the 'role' column exists in users table
-        ]);
+        'name' => 'System Admin',
+        'email' => env('ADMIN_EMAIL', 'admin@example.com'),
+        'password' => Hash::make(env('ADMIN_PASSWORD', 'changeme123')),
+        'role' => 'admin',
+    ]);
+
     }
 }
