@@ -62,10 +62,11 @@ export default {
   methods: {
     async fetchTasks() {
       try {
-        const res = await fetch('/dashboard/admin/tasks', {
+        const res = await fetch('/dashboard/admin/tasks/list', {
           headers: { Accept: 'application/json' },
         });
-        this.tasks = await res.json();
+        const data = await res.json();
+        this.tasks = data.data;
       } catch (err) {
         console.error('Failed to fetch tasks:', err);
       }

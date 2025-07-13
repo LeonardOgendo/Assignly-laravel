@@ -26,11 +26,7 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function ()
     // Vue SPA Entrypoint
     Route::get('/dashboard/admin', fn () => view('admin.dashboard'))->name('dashboard.admin');
 
-    // Catch-all for Vue routes under /dashboard/admin/*
-    Route::get('/dashboard/admin/{any}', fn () => view('admin.dashboard'))
-        ->where('any', '.*');
-
-    // JSON endpoints for tasks (for Vue Axios calls only)
+     // JSON endpoints for tasks (for Vue Axios calls only)
     Route::prefix('dashboard/admin/tasks')->group(function () {
         Route::get('/list', [TaskController::class, 'index'])->name('admin.tasks.index'); // JSON only
         Route::post('/', [TaskController::class, 'store'])->name('admin.tasks.store');
@@ -49,6 +45,10 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function ()
 
     // delete user
     Route::delete('/admin/users/{id}', [UserController::class, 'destroy'])->name('admin.users.destroy');
+
+    // Catch-all for Vue routes under /dashboard/admin/*
+    Route::get('/dashboard/admin/{any}', fn () => view('admin.dashboard'))
+        ->where('any', '.*');
 });
 
 

@@ -61,6 +61,7 @@ export default {
       try {
         const response = await fetch('/dashboard/admin/users/json');
         const data = await response.json();
+        console.log('Fetched users:', data)
         this.users = data;
       } catch (error) {
         console.error('Failed to load users:', error);
