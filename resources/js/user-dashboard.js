@@ -5,6 +5,8 @@ import UserLayout from './components/user/UserLayout.vue';
 import DashboardView from './components/user/DashboardView.vue';
 import TasksView from './components/user/TasksView.vue';
 import NotificationsView from './components/user/NotificationsView.vue';
+import TasksActiveView from './components/user/TasksActiveView.vue';
+import TasksCompletedView from './components/user/TasksCompletedView.vue';
 
 Vue.use(VueRouter);
 
@@ -15,6 +17,8 @@ const routes = [
         children: [
             { path: '', component: DashboardView },
             { path: 'tasks', component: TasksView },
+            { path: 'tasks/active', component: TasksActiveView },
+            { path: 'tasks/completed', component: TasksCompletedView },
             { path: 'notifications', component: NotificationsView },
         ],
     },

@@ -113,4 +113,22 @@ class TaskController extends Controller
             'message' => 'Task deleted.',
         ]);
     }
+    /**
+     * Return tasks assigned to the currently authenticated user
+     * excluding completed ones.
+     */
+    public function userTasks()
+    {
+        $user = Auth::user();
+
+        $tasks = Task::with('assigner')
+            ->where('user_id', $user->id)
+            ->where('status', '!=', 'completed')
+            ->latest()
+            ->get();
+
+        return response()->json($tasks);
+    }
+
+
 }
