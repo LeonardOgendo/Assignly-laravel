@@ -146,5 +146,19 @@ class TaskController extends Controller
         ]);
     }
 
+    // user: completed tasks
+    public function userCompletedTasks()
+    {
+        $user = Auth::user();
+
+        $tasks = Task::with('assigner')
+            ->where('user_id', $user->id)
+            ->where('status', 'completed')
+            ->latest()
+            ->get();
+
+        return response()->json($tasks);
+    }
+
 
 }

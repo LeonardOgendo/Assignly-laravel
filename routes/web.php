@@ -16,6 +16,7 @@ Route::middleware(['auth', RoleMiddleware::class . ':user'])->group(function () 
 
     // JSON endpoints: logged-in user tasks
     Route::get('/dashboard/user/tasks/json', [TaskController::class, 'userTasks']);
+    Route::get('/dashboard/user/tasks/completed/json',  [TaskController::class, 'userCompletedTasks']);
     Route::get('/dashboard/user/tasks/json/{task}', [TaskController::class, 'show']);
     Route::put('/dashboard/user/tasks/json/{task}',     [TaskController::class, 'updateStatus']);
 
