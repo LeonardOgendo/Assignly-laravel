@@ -11,5 +11,14 @@ class UserController extends Controller
     {
         return response()->json(User::all());
     }
+
+    public function destroy($id)
+    {
+        $user = \App\Models\User::findOrFail($id);
+        $user->delete();
+
+        return response()->json(['message' => 'User deleted successfully']);
+    }
+
 }
 

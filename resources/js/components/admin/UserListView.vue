@@ -69,13 +69,23 @@ export default {
         console.error('Error fetching users:', error);
       }
     },
-    handleDelete(userId) {
+    async handleDelete(userId) {
       const confirmed = confirm('Are you sure you want to delete this user?');
-      if (confirmed) {
+      if (!confirmed) return;
+
+      try {
+        await axios.delete(`/admin/users/${userId}`);
         this.users = this.users.filter((user) => user.id !== userId);
-        console.log(`User ${userId} deleted (mocked).`);
+        console.log(`User ${userId} deleted successfully.`);
+      } catch (error) {
+         console.error('DELETE /admin/users:', {
+          status:  error.response?.status,
+          data:    error.response?.data,
+          headers: error.response?.headers,
+        });
+        alert('An error occurred while deleting the user.');
       }
     },
-  },
+  }
 };
 </script>

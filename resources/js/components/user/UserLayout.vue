@@ -14,7 +14,7 @@
           <input type="hidden" name="_token" :value="csrf" />
           <button
             type="submit"
-            class="bg-red-500 hover:bg-red-600 text-white text-sm px-3 py-1 rounded"
+            class="bg-red-500 hover:bg-red-600 text-black text-sm px-3 py-1 rounded"
           >
             Logout
           </button>
