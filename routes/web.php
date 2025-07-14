@@ -6,6 +6,9 @@ use App\Http\Middleware\RoleMiddleware;
 use App\Http\Controllers\UserController;
 use Illuminate\Notifications\DatabaseNotification;
 use App\Http\Controllers\NotificationController;
+use App\Models\User;
+use App\Models\Task;
+
 
 // Landing Page
 Route::get('/', fn () => view('landing'));
@@ -68,13 +71,14 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function ()
     // delete user
     Route::delete('/admin/users/{id}', [UserController::class, 'destroy'])->name('admin.users.destroy');
 
-    Route::get('/dashboard/admin/metrics/json', function () {
-        return response()->json([
-            'totalUsers' => \App\Models\User::count(),
-            'totalTasks' => \App\Models\Task::count(),
-            // Add reviews count
-        ]);
-    });
+   Route::get('/dashboard/admin/metrics/json', function () {
+    return response()->json([
+        'totalUsers'      => User::where('role', 'user')->count(),
+        'totalTasks'      => Task::count(),
+        'completedTasks'  => Task::where('status', 'completed')->count(),
+        'pendingReviews'  => 0, // placeholder
+    ]);
+});
 
     // Catch-all for Vue routes under /dashboard/admin/*
     Route::get('/dashboard/admin/{any}', fn () => view('admin.dashboard'))
