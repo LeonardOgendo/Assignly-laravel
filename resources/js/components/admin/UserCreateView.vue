@@ -1,6 +1,6 @@
 
 <template>
-  <div class="p-6 max-w-xl mx-auto bg-white rounded shadow">
+  <div class="p-6 max-w-xl mx-auto bg-trasparent border border-[#777] rounded shadow">
     <h2 class="text-2xl font-bold mb-4">Create New User</h2>
 
     
@@ -14,7 +14,7 @@
     <form @submit.prevent="handleSubmit" novalidate>
   
       <div class="mb-4">
-        <label class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+        <label class="block text-sm font-medium text-white mb-1">Name</label>
         <input
           v-model="form.name"
           type="text"
@@ -25,7 +25,7 @@
       </div>
 
       <div class="mb-4">
-        <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+        <label class="block text-sm font-medium text-white mb-1">Email</label>
         <input
           v-model="form.email"
           type="email"

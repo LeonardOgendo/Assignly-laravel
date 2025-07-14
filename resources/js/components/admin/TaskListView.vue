@@ -1,12 +1,12 @@
 <template>
-  <div class="p-6">
-    <h1 class="text-2xl font-semibold mb-4">Task Management</h1>
+  <div>
+    <h1 class="text-xl font-semibold mb-4">Tasks</h1>
 
     <div v-if="successMessage" class="mb-4 p-3 bg-green-100 text-green-800 rounded">
       {{ successMessage }}
     </div>
 
-    <table class="w-full border text-left bg-white shadow rounded overflow-hidden">
+    <table class="w-full border-[#777] text-left bg-transparent shadow rounded overflow-hidden">
       <thead class="bg-gray-100 text-sm uppercase text-gray-600">
         <tr>
           <th class="p-3">Title</th>

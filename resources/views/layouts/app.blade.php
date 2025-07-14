@@ -13,7 +13,7 @@
     <!-- Tailwind + Vue (via Vite) -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-gray-100 text-gray-800 antialiased">
+<body class="bg-[#222] antialiased">
     @yield('content')
 </body>
 </html>

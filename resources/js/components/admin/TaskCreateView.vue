@@ -1,41 +1,67 @@
 <template>
-  <div class="max-w-2xl mx-auto p-6 bg-white shadow rounded">
-    <h2 class="text-xl font-semibold mb-4">Assign New Task</h2>
+  <div class="max-w-2xl mx-auto p-6 bg-transparent border border-[#777] rounded shadow-md">
+    <h2 class="text-xl font-semibold mb-4 text-white">Assign New Task</h2>
 
     <form @submit.prevent="submitTask">
+      <!-- Title -->
       <div class="mb-4">
-        <label class="block mb-1 font-medium">Title</label>
-        <input v-model="form.title" type="text" class="w-full border px-3 py-2 rounded" required />
-        <p v-if="errors.title" class="text-sm text-red-600">{{ errors.title }}</p>
+        <label class="block mb-1 font-medium text-white">Title</label>
+        <input
+          v-model="form.title"
+          type="text"
+          class="w-full bg-[#c2c2c2] text-black border border-gray-400 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+          required
+        />
+        <p v-if="errors.title" class="text-sm text-red-500">{{ errors.title }}</p>
       </div>
 
+      <!-- Description -->
       <div class="mb-4">
-        <label class="block mb-1 font-medium">Description</label>
-        <textarea v-model="form.description" class="w-full border px-3 py-2 rounded"></textarea>
+        <label class="block mb-1 font-medium text-white">Description</label>
+        <textarea
+          v-model="form.description"
+          class="w-full text-black border border-gray-400 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+        ></textarea>
       </div>
 
+      <!-- Deadline -->
       <div class="mb-4">
-        <label class="block mb-1 font-medium">Deadline</label>
-        <input v-model="form.deadline" type="datetime-local" class="w-full border px-3 py-2 rounded" />
+        <label class="block mb-1 font-medium text-white">Deadline</label>
+        <input
+          v-model="form.deadline"
+          type="datetime-local"
+          class="w-full bg-[#c2c2c2] text-black border border-gray-400 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
       </div>
 
+      <!-- Assign To -->
       <div class="mb-6">
-        <label class="block mb-1 font-medium">Assign To</label>
-        <select v-model="form.user_id" class="w-full border px-3 py-2 rounded" required>
+        <label class="block mb-1 font-medium text-white">Assign To</label>
+        <select
+          v-model="form.user_id"
+          class="w-full bg-[#c2c2c2] text-black border border-gray-400 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+          required
+        >
           <option disabled value="">-- Select User --</option>
           <option v-for="user in users" :key="user.id" :value="user.id">
             {{ user.name }} ({{ user.email }})
           </option>
         </select>
-        <p v-if="errors.user_id" class="text-sm text-red-600">{{ errors.user_id }}</p>
+        <p v-if="errors.user_id" class="text-sm text-red-500">{{ errors.user_id }}</p>
       </div>
 
-      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" :disabled="loading">
+      <!-- Submit Button -->
+      <button
+        class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+        :disabled="loading"
+      >
         {{ loading ? 'Submitting...' : 'Assign Task' }}
       </button>
     </form>
   </div>
 </template>
+
+
 
 <script>
 export default {

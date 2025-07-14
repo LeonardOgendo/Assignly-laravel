@@ -1,57 +1,140 @@
 <template>
-  <div class="flex min-h-screen">
-    <!-- Sidebar -->
-    <aside class="w-64 bg-gray-900 text-white flex flex-col justify-between">
-      <div>
-        <div class="p-4 text-lg font-semibold border-b border-gray-700">
-          Admin Panel
+  <div
+    class="min-h-screen text-white flex flex-col w-full"
+    :style="responsiveWidth"
+  >
+    <!-- Top Nav -->
+    <header class="bg-[#1e1e1e] py-4 px-6 flex justify-between items-center shadow-sm">
+      <h1 class="text-xl font-semibold">Assignly | Admin</h1>
+
+      <!-- User profile area-->
+      <div class="relative" @click="toggleDropdown">
+        <div class="flex items-center space-x-2 cursor-pointer">
+  
+          <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 10a4 4 0 100-8 4 4 0 000 8zM2 18a8 8 0 1116 0H2z" />
+          </svg>
+
+          <span class="text-white">{{ user.first_name }}</span>
+
+          <svg
+            class="w-4 h-4 text-white transform transition-transform duration-200"
+            :class="dropdownOpen ? 'rotate-90' : 'rotate-0'"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M5.23 7.21a.75.75 0 011.06.02L10 11.584l3.71-4.354a.75.75 0 111.14.976l-4.25 5a.75.75 0 01-1.14 0l-4.25-5a.75.75 0 01.02-1.06z"
+              clip-rule="evenodd"
+            />
+          </svg>
         </div>
-        <nav class="p-4 space-y-2">
+
+        <!-- Dropdown Menu -->
+        <div
+          v-if="dropdownOpen"
+          class="absolute right-0 mt-2 w-32 bg-[#2a2a2a] border border-gray-700 rounded shadow-lg z-50"
+        >
+          <button
+            @click="logout"
+            class="w-full text-left px-4 py-2 text-sm hover:bg-red-600 rounded"
+          >
+            Logout
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Area -->
+    <div class="flex flex-1">
+      <!-- Sidebar -->
+      <aside class="w-64 bg-[#1b1b1b] flex flex-col py-6 px-4">
+        <nav class="space-y-4">
           <router-link
             to="/dashboard/admin"
-            class="block px-3 py-2 rounded hover:bg-gray-800"
             exact
-          >Dashboard</router-link>
+            class="flex items-center space-x-3 px-3 py-2 rounded hover:bg-gray-800"
+          >
+            <HomeIcon class="w-5 h-5" />
+            <span class="ml-3">Dashboard</span>
+          </router-link>
+
           <router-link
             to="/dashboard/admin/tasks"
-            class="block px-3 py-2 rounded hover:bg-gray-800"
-          >Task Manager</router-link>
+            class="flex items-center space-x-3 px-3 py-2 rounded hover:bg-gray-800"
+          >
+            <ClipboardListIcon class="w-5 h-5" />
+            <span class="ml-3">Manage Tasks</span>
+          </router-link>
+
           <router-link
             to="/dashboard/admin/users"
-            class="block px-3 py-2 rounded hover:bg-gray-800"
-          >User Manager</router-link>
+            class="flex items-center space-x-3 px-3 py-2 rounded hover:bg-gray-800"
+          >
+            <UsersIcon class="w-5 h-5" />
+            <span class="ml-3">Manage Users</span>
+          </router-link>
         </nav>
-      </div>
+      </aside>
 
-      <!-- Logout -->
-      <form
-        method="POST"
-        action="/logout"
-        class="p-4 border-t border-gray-700"
+      <!-- Main Content -->
+      <main
+        class="flex-1 p-6 h-[85vh] overflow-y-auto bg-[#2a2a2a] rounded-lg shadow-lg"
       >
-        <input type="hidden" name="_token" :value="csrfToken" />
-        <button
-          type="submit"
-          class="w-full px-3 py-2 bg-red-600 hover:bg-red-700 text-white rounded text-left"
-        >
-          Logout
-        </button>
-      </form>
-    </aside>
-
-    <!-- Main content -->
-    <main class="flex-1 bg-gray-50 p-6 overflow-y-auto">
-      <router-view />
-    </main>
+        <router-view />
+      </main>
+    </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+import { HomeIcon, ClipboardListIcon, UsersIcon } from '@vue-hero-icons/outline'
+
 export default {
+  name: 'AdminLayout',
+  components: { HomeIcon, ClipboardListIcon, UsersIcon },
+  
   data() {
     return {
-      csrfToken: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-    };
+      responsiveWidth: {
+        width: '95%',
+        margin: '0 auto',
+        maxWidth: '100%',
+      },
+      dropdownOpen: false,
+      user: {
+        first_name: (window.Laravel?.user?.name || 'Admin').split(' ')[0],
+      },
+    }
   },
-};
+
+  mounted() {
+    this.updateMaxWidth()
+    window.addEventListener('resize', this.updateMaxWidth)
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.updateMaxWidth)
+  },
+
+  methods: {
+    updateMaxWidth() {
+      const screenWidth = window.innerWidth
+      this.responsiveWidth.maxWidth = screenWidth >= 768 ? '90%' : '95%'
+    },
+    toggleDropdown() {
+      this.dropdownOpen = !this.dropdownOpen
+    },
+    async logout() {
+      try {
+        await axios.post('/logout')
+        window.location.href = '/' 
+      } catch (error) {
+        console.error('Logout failed:', error)
+        alert('Logout failed. Please try again.')
+      }
+    },
+  },
+}
 </script>
