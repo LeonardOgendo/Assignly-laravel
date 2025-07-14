@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
 use App\Http\Middleware\RoleMiddleware;
 use App\Http\Controllers\UserController;
-
+use Illuminate\Notifications\DatabaseNotification;
+use App\Http\Controllers\NotificationController;
 
 // Landing Page
 Route::get('/', fn () => view('landing'));
@@ -20,6 +21,11 @@ Route::middleware(['auth', RoleMiddleware::class . ':user'])->group(function () 
     Route::get('/dashboard/user/tasks/json/{task}', [TaskController::class, 'show']);
     Route::put('/dashboard/user/tasks/json/{task}',     [TaskController::class, 'updateStatus']);
 
+    // Handle notifications
+    Route::get('/dashboard/user/notifications/json', [NotificationController::class, 'unread']);
+    Route::post('/dashboard/user/notifications/{id}/read', [NotificationController::class, 'markAsRead']);
+    Route::post('/dashboard/user/notifications/read-all', [NotificationController::class, 'markAll']);
+    
     // Catch all routes
     Route::get('/dashboard/user/{any}', fn () => view('user.dashboard'))
         ->where('any', '.*');

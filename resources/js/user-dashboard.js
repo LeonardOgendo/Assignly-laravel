@@ -1,5 +1,6 @@
 import Vue from 'vue/dist/vue.esm.js';
 import VueRouter from 'vue-router';
+import axios from 'axios';
 
 import UserLayout from './components/user/UserLayout.vue';
 import DashboardView from './components/user/DashboardView.vue';
@@ -11,6 +12,18 @@ import TaskDetailView from './components/user/TaskDetailView.vue';
 import TaskReadonlyView from './components/user/TaskReadonlyView.vue';
 
 Vue.use(VueRouter);
+
+window.axios = axios;
+
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+const token = document.head.querySelector('meta[name="csrf-token"]');
+
+if (token) {
+  axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+} else {
+  console.error('CSRF token not found. Please check your meta tag.');
+}
 
 const routes = [
     {

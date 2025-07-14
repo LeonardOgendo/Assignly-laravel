@@ -20,7 +20,7 @@ class TaskAssigned extends Notification
 
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail', 'database'];
     }
 
     public function toMail($notifiable)
@@ -33,5 +33,14 @@ class TaskAssigned extends Notification
             ->line('**Deadline:** ' . optional($this->task->deadline)->format('d M Y, H:i'))
             ->action('View Task', url('/tasks/' . $this->task->id))
             ->line('Please take the necessary action.');
+    }
+
+    public function toArray($notifiable)
+    {
+        return [
+            'title' => 'New Task: ' . $this->task->title,
+            'task_id' => $this->task->id,
+            'assigned_by' => optional($this->task->assigner)->name,
+        ];
     }
 }
