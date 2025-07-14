@@ -1,27 +1,27 @@
 <template>
-  <div class="max-w-2xl mx-auto p-6 bg-white shadow rounded">
-    <h2 class="text-xl font-semibold mb-4">Edit Task</h2>
+  <div class="max-w-2xl mx-auto px-6 py-2 border border-[#3f3f3f] shadow rounded-md">
+    <h2 class="text-xl text-[#e65100] font-semibold mb-4">Edit Task</h2>
 
     <form @submit.prevent="updateTask">
       <div class="mb-4">
-        <label class="block mb-1 font-medium">Title</label>
-        <input v-model="form.title" type="text" class="w-full border px-3 py-2 rounded" required />
+        <label class="block mb-1">Title</label>
+        <input v-model="form.title" type="text" class="w-full border text-gray-500 px-3 py-1 rounded" required />
         <p v-if="errors.title" class="text-sm text-red-600">{{ errors.title }}</p>
       </div>
 
       <div class="mb-4">
-        <label class="block mb-1 font-medium">Description</label>
-        <textarea v-model="form.description" class="w-full border px-3 py-2 rounded"></textarea>
+        <label class="block mb-1">Description</label>
+        <textarea v-model="form.description" class="w-full border text-gray-500 px-3 py-1 rounded"></textarea>
       </div>
 
       <div class="mb-4">
-        <label class="block mb-1 font-medium">Deadline</label>
-        <input v-model="form.deadline" type="datetime-local" class="w-full border px-3 py-2 rounded" />
+        <label class="block mb-1">Deadline</label>
+        <input v-model="form.deadline" type="datetime-local" class="w-full border text-gray-500 px-3 py-1 rounded" />
       </div>
 
       <div class="mb-6">
-        <label class="block mb-1 font-medium">Assign To</label>
-        <select v-model="form.user_id" class="w-full border px-3 py-2 rounded" required>
+        <label class="block mb-1">Assign To</label>
+        <select v-model="form.user_id" class="w-full border text-gray-500 px-3 py-1 rounded" required>
           <option disabled value="">-- Select User --</option>
           <option v-for="user in users" :key="user.id" :value="user.id">
             {{ user.name }} ({{ user.email }})
@@ -31,15 +31,15 @@
       </div>
 
       <div class="mb-6">
-        <label class="block mb-1 font-medium">Status</label>
-        <select v-model="form.status" class="w-full border px-3 py-2 rounded">
+        <label class="block mb-1">Status</label>
+        <select v-model="form.status" class="w-full border text-gray-500 px-3 py-1 rounded">
           <option value="pending">Pending</option>
           <option value="in_progress">In Progress</option>
           <option value="completed">Completed</option>
         </select>
       </div>
 
-      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" :disabled="loading">
+      <button class="bg-[#e65100] text-white px-4 py-1 rounded border border-[#e65100] hover:border-white transition" :disabled="loading">
         {{ loading ? 'Updating...' : 'Update Task' }}
       </button>
     </form>

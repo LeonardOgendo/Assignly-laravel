@@ -1,29 +1,29 @@
 <template>
   <div>
-    <h2 class="text-xl font-bold mb-4 text-white">All Users</h2>
+    <h2 class="text-xl font-bold mb-4 text-[#e65100]">All Users</h2>
 
-    <!-- Table -->
-    <div class="overflow-x-auto border border-[#777] rounded-md">
-      <table class="min-w-full text-sm bg-transparent text-white table-fixed">
-        <thead>
-          <tr class="bg-[#333] text-gray-200">
-            <th class="py-3 px-4 border-b border-[#555] text-left w-12">#</th>
-            <th class="py-3 px-4 border-b border-[#555] text-left">Name</th>
-            <th class="py-3 px-4 border-b border-[#555] text-left">Email</th>
-            <th class="py-3 px-4 border-b border-[#555] text-left w-32">Role</th>
-            <th class="py-3 px-4 border-b border-[#555] text-left w-36">Actions</th>
+    <!-- User Table -->
+    <div class="overflow-x-auto border border-[#3f3f3f] rounded-md shadow">
+      <table class="w-full text-sm text-white bg-transparent table-auto">
+        <thead class="bg-[#e65100] text-white uppercase text-[0.75rem]">
+          <tr>
+            <th class="p-3 text-left">#</th>
+            <th class="p-3 text-left">Name</th>
+            <th class="p-3 text-left">Email</th>
+            <th class="p-3 text-left">Role</th>
+            <th class="p-3 text-right">Actions</th>
           </tr>
         </thead>
         <tbody>
           <tr
             v-for="(user, index) in users"
             :key="user.id"
-            class="hover:bg-[#2f2f2f] transition"
+            class="border-t border-[#444] hover:bg-[#2f2f2f] transition"
           >
-            <td class="py-3 px-4 border-b border-[#444]">{{ index + 1 }}</td>
-            <td class="py-3 px-4 border-b border-[#444]">{{ user.name }}</td>
-            <td class="py-3 px-4 border-b border-[#444]">{{ user.email }}</td>
-            <td class="py-3 px-4 border-b border-[#444]">
+            <td class="p-3 text-gray-400">{{ index + 1 }}</td>
+            <td class="p-3">{{ user.name }}</td>
+            <td class="p-3">{{ user.email }}</td>
+            <td class="p-3">
               <span
                 :class="[
                   'text-xs px-2 py-1 rounded font-medium',
@@ -35,21 +35,19 @@
                 {{ user.role }}
               </span>
             </td>
-            <td class="py-3 px-4 border-b border-[#444]">
-              <div class="flex gap-4">
-                <button
-                  @click="openEdit(user)"
-                  class="text-indigo-400 hover:underline hover:text-indigo-300 transition"
-                >
-                  Edit
-                </button>
-                <button
-                  @click="handleDelete(user.id)"
-                  class="text-red-400 hover:underline hover:text-red-300 transition"
-                >
-                  Delete
-                </button>
-              </div>
+            <td class="p-3 text-right space-x-4">
+              <button
+                @click="openEdit(user)"
+                class="text-blue-500 mr-2 hover:underline hover:text-indigo-300 transition"
+              >
+                Edit
+              </button>
+              <button
+                @click="handleDelete(user.id)"
+                class="text-[#fd4236] hover:underline transition"
+              >
+                Delete
+              </button>
             </td>
           </tr>
         </tbody>
@@ -57,63 +55,65 @@
     </div>
 
     <!-- Edit Modal -->
-    <div
-      v-if="editingUser"
-      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
-    >
-      <div class="bg-[#1f1f1f] text-white rounded-lg p-6 w-full max-w-md border border-[#555] shadow-lg">
-        <h3 class="text-xl font-semibold mb-4">Edit User</h3>
+ <!-- Edit Modal -->
+<div
+  v-if="editingUser"
+  class="fixed inset-0 flex items-center justify-center z-50"
+>
+  <!-- Opaque box with backdrop blur and slight transparency -->
+  <div class="bg-[#1f1f1f]/90 backdrop-blur-md text-white border border-[#555] shadow-lg rounded-lg p-6 w-full max-w-md">
+    <h3 class="text-lg text-[#e65100] font-semibold mb-4">Edit User</h3>
 
-        <div class="space-y-4">
-          <div>
-            <label class="block text-sm font-medium text-gray-300">Name</label>
-            <input
-              v-model="editForm.name"
-              type="text"
-              class="mt-1 w-full bg-[#c2c2c2] text-black border border-gray-400 px-3 py-2 rounded"
-            />
-          </div>
+    <div class="space-y-4">
+      <div>
+        <label class="block text-sm text-gray-300 mb-1">Name</label>
+        <input
+          v-model="editForm.name"
+          type="text"
+          class="w-full bg-[#c2c2c2] text-black border border-gray-400 px-3 py-2 rounded text-sm"
+        />
+      </div>
 
-          <div>
-            <label class="block text-sm font-medium text-gray-300">Email</label>
-            <input
-              v-model="editForm.email"
-              type="email"
-              class="mt-1 w-full bg-[#c2c2c2] text-black border border-gray-400 px-3 py-2 rounded"
-            />
-          </div>
+      <div>
+        <label class="block text-sm text-gray-300 mb-1">Email</label>
+        <input
+          v-model="editForm.email"
+          type="email"
+          class="w-full bg-[#c2c2c2] text-black border border-gray-400 px-3 py-2 rounded text-sm"
+        />
+      </div>
 
-          <div>
-            <label class="block text-sm font-medium text-gray-300">Role</label>
-            <select
-              v-model="editForm.role"
-              class="mt-1 w-full bg-[#c2c2c2] text-black border border-gray-400 px-3 py-2 rounded"
-            >
-              <option value="user">User</option>
-              <option value="admin">Admin</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="mt-6 flex justify-end space-x-3">
-          <button
-            @click="editingUser = null"
-            class="px-4 py-2 rounded bg-[#444] text-gray-200 hover:bg-[#555] transition"
-          >
-            Cancel
-          </button>
-          <button
-            @click="submitEdit"
-            class="px-4 py-2 rounded bg-indigo-600 text-white hover:bg-indigo-700 transition"
-          >
-            Save
-          </button>
-        </div>
+      <div>
+        <label class="block text-sm text-gray-300 mb-1">Role</label>
+        <select
+          v-model="editForm.role"
+          class="w-full bg-[#c2c2c2] text-black border border-gray-400 px-3 py-2 rounded text-sm"
+        >
+          <option value="user">User</option>
+          <option value="admin">Admin</option>
+        </select>
       </div>
     </div>
+
+    <div class="mt-6 flex justify-end space-x-3">
+      <button
+        @click="editingUser = null"
+        class="px-4 py-2 rounded bg-[#444] text-gray-200 hover:bg-[#555] transition"
+      >
+        Cancel
+      </button>
+      <button
+        @click="submitEdit"
+        class="px-4 py-2 rounded bg-[#e65100] text-white hover:bg-[#2e2e2e] transition"
+      >
+        Save
+      </button>
+    </div>
+  </div>
+</div>
+
   </div>
 </template>
-
 
 <script>
 export default {

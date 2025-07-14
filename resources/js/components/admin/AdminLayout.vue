@@ -4,18 +4,20 @@
     :style="responsiveWidth"
   >
     <!-- Top Nav -->
-    <header class="bg-[#1e1e1e] py-4 px-6 flex justify-between items-center shadow-sm">
-      <h1 class="text-xl font-semibold">Assignly | Admin</h1>
-
+    <header class="bg-[#1e1e1e] py-4 px-6 flex justify-between items-center shadow-sm mb-3">
+      <div class="flex">
+        <h1 class="text-xl font-bold">A<span style="letter-spacing: -0.15em">ssig</span><span class="text-[#e65100]">nly</span></h1>
+        <span class="ml-[6.8rem] border-b-2 border-[#e65100] pb-3 font-bold mt-1">Admin <span class="text-[#e65100]">Dashboard</span></span>
+      </div>
       <!-- User profile area-->
       <div class="relative" @click="toggleDropdown">
         <div class="flex items-center space-x-2 cursor-pointer">
   
-          <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+          <svg class="w-5 h-5 text-white bg-[#e65100] p-1 rounded" fill="currentColor" viewBox="0 0 20 20">
             <path d="M10 10a4 4 0 100-8 4 4 0 000 8zM2 18a8 8 0 1116 0H2z" />
           </svg>
 
-          <span class="text-white">{{ user.first_name }}</span>
+          <span class="text-white ml-2">{{ user.first_name }}</span>
 
           <svg
             class="w-4 h-4 text-white transform transition-transform duration-200"
@@ -50,13 +52,13 @@
     <div class="flex flex-1">
       <!-- Sidebar -->
       <aside class="w-64 bg-[#1b1b1b] flex flex-col py-6 px-4">
-        <nav class="space-y-4">
+        <nav class="space-y-[1rem]">
           <router-link
             to="/dashboard/admin"
             exact
             class="flex items-center space-x-3 px-3 py-2 rounded hover:bg-gray-800"
           >
-            <HomeIcon class="w-5 h-5" />
+            <HomeIcon class="w-5 h-5 text-[#e65100]" />
             <span class="ml-3">Dashboard</span>
           </router-link>
 
@@ -64,7 +66,7 @@
             to="/dashboard/admin/tasks"
             class="flex items-center space-x-3 px-3 py-2 rounded hover:bg-gray-800"
           >
-            <ClipboardListIcon class="w-5 h-5" />
+            <ClipboardListIcon class="w-5 h-5 text-[#e65100]" />
             <span class="ml-3">Manage Tasks</span>
           </router-link>
 
@@ -72,7 +74,7 @@
             to="/dashboard/admin/users"
             class="flex items-center space-x-3 px-3 py-2 rounded hover:bg-gray-800"
           >
-            <UsersIcon class="w-5 h-5" />
+            <UsersIcon class="w-5 h-5 text-[#e65100]" />
             <span class="ml-3">Manage Users</span>
           </router-link>
         </nav>
@@ -105,7 +107,7 @@ export default {
       },
       dropdownOpen: false,
       user: {
-        first_name: (window.Laravel?.user?.name || 'Admin').split(' ')[0],
+        first_name: window.Laravel?.user?.name || 'Admin',
       },
     }
   },

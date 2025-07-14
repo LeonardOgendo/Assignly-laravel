@@ -1,14 +1,15 @@
 <template>
   <div>
-    <h1 class="text-xl font-semibold mb-4">Tasks</h1>
+    <h1 class="text-xl text-[#e65100] font-semibold mb-4">Tasks</h1>
 
     <div v-if="successMessage" class="mb-4 p-3 bg-green-100 text-green-800 rounded">
       {{ successMessage }}
     </div>
 
-    <table class="w-full border-[#777] text-left bg-transparent shadow rounded overflow-hidden">
-      <thead class="bg-gray-100 text-sm uppercase text-gray-600">
+    <table class="w-full border border-[#3f3f3f] text-left bg-transparent shadow rounded overflow-hidden">
+      <thead class="bg-[#e65100] text-sm uppercase text-white">
         <tr>
+          <th class="p-3">#</th>
           <th class="p-3">Title</th>
           <th class="p-3">Assignee</th>
           <th class="p-3">Deadline</th>
@@ -17,7 +18,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="task in tasks" :key="task.id" class="border-t">
+        <tr v-for="(task, index) in tasks" :key="task.id" class="border-t">
+          <td class="p-3 text-gray-500">{{ index + 1 }}</td>
           <td class="p-3">{{ task.title }}</td>
           <td class="p-3">{{ task.assignee?.name || '—' }}</td>
           <td class="p-3">{{ formatDate(task.deadline) }}</td>
@@ -25,7 +27,7 @@
           <td class="p-3 text-right space-x-2">
             <router-link
               :to="`/dashboard/admin/tasks/${task.id}/edit`"
-              class="text-blue-600 hover:underline"
+              class="text-blue-600 mr-2 hover:underline"
             >
               Edit
             </router-link>
@@ -41,6 +43,7 @@
     </table>
   </div>
 </template>
+
 
 <script>
 export default {

@@ -32,7 +32,14 @@ export default {
     'border-[#3f3f3f]',
     'text-[#8b8b8b]',
     'focus:ring-[#e65100]',
-    'hover:bg-[#e65100]'
+    'hover:bg-[#e65100]',
+    'md:min-w-[45%]',
+    'border-[#e65100]',
+    'hover:border-white',
+    'text-[#fd4236]',
+    'bg-[#1f1f1f]/90',
+    'ml-[6.8rem]',
+    'space-y-[1rem]'
   ],
 
     theme: {
