@@ -12,7 +12,7 @@
         <div>
           <button
             @click="goToLogin"
-            class="px-5 py-1 text-md bg-[#e65100] text-white rounded hover:bg-orange-600 transition"
+            class="px-5 py-1 text-md bg-[#e65100] text-white rounded border border-[#e65100] hover:border-white transition"
           >
             Login
           </button>
