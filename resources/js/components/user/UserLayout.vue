@@ -2,8 +2,10 @@
   <div class="min-h-screen text-white flex flex-col w-full" :style="responsiveWidth">
     <!-- Top Bar -->
     <header class="bg-[#1e1e1e] py-4 px-6 flex justify-between items-center mb-3 shadow-sm">
-      <h1 class="text-xl font-bold">A<span style="letter-spacing: -0.15em">ssig</span><span class="text-[#e65100]">nly</span></h1>
-
+      <div>
+        <h1 class="text-xl font-bold">A<span style="letter-spacing: -0.15em">ssig</span><span class="text-[#e65100]">nly</span></h1>
+        <div class="ml-[11.7rem] h-[3px] min-w-[100px] bg-[#e65100]"></div>
+      </div>
       <!-- User Profile Area -->
       <div class="relative" @click="toggleDropdown">
         <div class="flex items-center space-x-2 cursor-pointer">
