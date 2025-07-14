@@ -11,7 +11,7 @@
             <path d="M10 10a4 4 0 100-8 4 4 0 000 8zM2 18a8 8 0 1116 0H2z" />
           </svg>
 
-          <span class="text-white ml-2">{{ user.first_name }}</span>
+          <span class="text-white ml-2">{{ user.name }}</span>
 
           <svg
             class="w-4 h-4 text-white transform transition-transform duration-200"
@@ -74,7 +74,7 @@ export default {
       },
       dropdownOpen: false,
       user: {
-        first_name: (window.Laravel?.user?.name || 'User').split(' ')[0],
+        name: window.Laravel?.user?.name || 'User',
       },
     }
   },
