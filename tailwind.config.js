@@ -46,7 +46,10 @@ export default {
     'min-h-[150px]',
     'md:text-[1.3rem]',
     'h-[3px]', 
-    'min-w-[100px]'
+    'min-w-[100px]',
+    'sm:flex-row',
+    'md:w-[30%]',
+    'md:flex-row'
   ],
 
     theme: {
