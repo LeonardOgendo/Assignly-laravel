@@ -39,6 +39,20 @@ class UserController extends Controller
 
         return response()->json(['message' => 'User created and credentials sent.'], 201);
     }
+    // Update user info
+    public function update(Request $request, User $user)
+    {
+        $validated = $request->validate([
+            'name'  => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'role'  => 'required|in:user,admin',
+        ]);
+
+        $user->update($validated);
+
+        return response()->json(['message' => 'User updated successfully']);
+    }
+
 
     // Delete a user
     public function destroy($id)

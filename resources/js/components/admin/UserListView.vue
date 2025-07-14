@@ -2,6 +2,7 @@
   <div class="p-6">
     <h2 class="text-2xl font-bold mb-4">All Users</h2>
 
+    <!-- Table -->
     <div class="overflow-x-auto">
       <table class="min-w-full bg-white border">
         <thead>
@@ -34,7 +35,13 @@
                 {{ user.role }}
               </span>
             </td>
-            <td class="py-2 px-4 border-b">
+            <td class="py-2 px-4 border-b space-x-3">
+              <button
+                @click="openEdit(user)"
+                class="text-sm text-indigo-600 hover:underline"
+              >
+                Edit
+              </button>
               <button
                 @click="handleDelete(user.id)"
                 class="text-sm text-red-600 hover:underline"
@@ -46,6 +53,62 @@
         </tbody>
       </table>
     </div>
+
+    <!-- Edit Modal -->
+    <div
+      v-if="editingUser"
+      class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50"
+    >
+      <div class="bg-white rounded-lg p-6 w-full max-w-md shadow-lg">
+        <h3 class="text-xl font-semibold mb-4">Edit User</h3>
+
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Name</label>
+            <input
+              v-model="editForm.name"
+              type="text"
+              class="mt-1 w-full border p-2 rounded"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Email</label>
+            <input
+              v-model="editForm.email"
+              type="email"
+              class="mt-1 w-full border p-2 rounded"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Role</label>
+            <select
+              v-model="editForm.role"
+              class="mt-1 w-full border p-2 rounded"
+            >
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mt-6 flex justify-end space-x-3">
+          <button
+            @click="editingUser = null"
+            class="px-4 py-2 rounded bg-gray-100 hover:bg-gray-200"
+          >
+            Cancel
+          </button>
+          <button
+            @click="submitEdit"
+            class="px-4 py-2 rounded bg-indigo-600 text-gray-800 hover:bg-indigo-700"
+          >
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -55,6 +118,12 @@ export default {
   data() {
     return {
       users: [],
+      editingUser: null,
+      editForm: {
+        name: '',
+        email: '',
+        role: 'user',
+      },
     };
   },
   mounted() {
@@ -76,16 +145,25 @@ export default {
       try {
         await axios.delete(`/admin/users/${userId}`);
         this.users = this.users.filter((user) => user.id !== userId);
-        console.log(`User ${userId} deleted successfully.`);
       } catch (error) {
-         console.error('DELETE /admin/users:', {
-          status:  error.response?.status,
-          data:    error.response?.data,
-          headers: error.response?.headers,
-        });
-        alert('An error occurred while deleting the user.');
+        console.error('DELETE /admin/users:', error.response || error);
+        alert('Error deleting user.');
       }
     },
-  }
+    openEdit(user) {
+      this.editingUser = user;
+      this.editForm = { ...user };
+    },
+    async submitEdit() {
+      try {
+        await axios.put(`/admin/users/${this.editingUser.id}`, this.editForm);
+        await this.fetchUsers(); // refresh table
+        this.editingUser = null;
+      } catch (error) {
+        console.error('PUT /admin/users:', error.response || error);
+        alert('Error updating user.');
+      }
+    },
+  },
 };
 </script>

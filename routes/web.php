@@ -53,6 +53,9 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function ()
     // Auto-generate password and create new user
     Route::post('/admin/users', [UserController::class, 'store'])->name('admin.users.store');
 
+    // update user
+    Route::put('/admin/users/{user}', [UserController::class, 'update'])->name('admin.users.update');
+
     // delete user
     Route::delete('/admin/users/{id}', [UserController::class, 'destroy'])->name('admin.users.destroy');
 
