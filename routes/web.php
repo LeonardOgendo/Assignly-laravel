@@ -65,6 +65,14 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function ()
     // delete user
     Route::delete('/admin/users/{id}', [UserController::class, 'destroy'])->name('admin.users.destroy');
 
+    Route::get('/dashboard/admin/metrics/json', function () {
+        return response()->json([
+            'totalUsers' => \App\Models\User::count(),
+            'totalTasks' => \App\Models\Task::count(),
+            // Add reviews count
+        ]);
+    });
+
     // Catch-all for Vue routes under /dashboard/admin/*
     Route::get('/dashboard/admin/{any}', fn () => view('admin.dashboard'))
         ->where('any', '.*');
