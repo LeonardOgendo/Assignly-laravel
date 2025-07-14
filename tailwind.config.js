@@ -42,7 +42,8 @@ export default {
     'space-y-[1rem]',
     'mt-12',
     'mt-5',
-    'min-h-[150px]'
+    'min-h-[150px]',
+    'md:text-[1.3rem]'
   ],
 
     theme: {

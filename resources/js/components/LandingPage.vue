@@ -22,7 +22,7 @@
 
     <!-- Hero Section -->
     <section class="flex-1 flex flex-col justify-center mt-12 items-center text-center px-4">
-      <h2 class="md:text-2xl font-bold text-white">
+      <h2 class="md:text-[1.3rem] font-bold text-white">
         Stay On Top of Tasks. Focus on What Matters
       </h2>
       <p class="mt-4 max-w-xl text-gray-300 text-md">
