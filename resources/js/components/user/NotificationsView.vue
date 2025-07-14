@@ -1,9 +1,9 @@
 <template>
   <section class="space-y-4">
     <div class="flex items-center justify-between">
-      <h2 class="text-lg font-semibold">Notifications</h2>
+      <h2 class="text-lg font-semibold mb-4">Notifications</h2>
       <button
-        class="text-sm text-blue-600 hover:underline"
+        class="text-sm text-[#e65100] hover:underline"
         @click="markAll"
         v-if="notifications.length"
       >
@@ -15,15 +15,15 @@
     <div
       v-for="note in notifications"
       :key="note.id"
-      class="bg-white p-4 rounded-md shadow-sm flex justify-between"
+      class="p-4 border border-[#3f3f3f] rounded-md shadow-sm flex justify-between"
     >
       <div>
-        <p class="font-medium">{{ note.data.title }}</p>
-        <p class="text-xs text-gray-500">Assigned by: {{ note.data.assigned_by }}</p>
-        <p class="text-xs text-gray-400">Received: {{ timeAgo(note.created_at) }}</p>
+        <p class="text-[0.9rem] mb-1">{{ note.data.title }}</p>
+        <p class="text-xs text-[#8b8b8b]">Assigned by: {{ note.data.assigned_by }}</p>
+        <p class="text-xs text-[#8b8b8b]">Received: {{ timeAgo(note.created_at) }}</p>
       </div>
       <button
-        class="text-xs text-blue-500 hover:underline"
+        class="text-xs text-[#e65100] hover:underline"
         @click="markRead(note.id)"
       >
         Mark read

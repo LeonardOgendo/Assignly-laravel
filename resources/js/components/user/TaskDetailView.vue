@@ -1,19 +1,17 @@
 <template>
-  <div class="p-6 max-w-xl mx-auto">
+  <div class="max-w-xl">
     <div v-if="loading" class="text-gray-500">Loading task...</div>
 
-    <div v-else-if="task" class="space-y-4">
-      <h2 class="text-2xl font-bold">{{ task.title }}</h2>
-      <p class="text-gray-700">{{ task.description || 'No description provided.' }}</p>
-      <p class="text-sm text-gray-500">Due: {{ formatDate(task.deadline) }}</p>
-      <p class="text-sm text-gray-500">Assigned By: {{ task.assigner?.name }}</p>
+    <div v-else-if="task" class="space-y-4 border border-[#3f3f3f] p-4 rounded-md">
+      <h2 class="text-xl font-bold mb-3">{{ task.title }}</h2>
+      <p class="text-[#8b8b8b] mb-2">{{ task.description || 'No description provided.' }}</p>
+      <p class="text-xs text-[#8b8b8b]">Due: {{ formatDate(task.deadline) }}</p>
+      <p class="text-xs text-[#8b8b8b] mb-3">Assigned By: {{ task.assigner?.name }}</p>
 
-      <!-- ✅ Inline success message -->
       <p v-if="successMessage" class="text-green-600 font-medium">
         ✅ {{ successMessage }}
       </p>
 
-      <!-- ❌ Inline error message -->
       <p v-if="errorMessage" class="text-red-600 font-medium">
         ⚠️ {{ errorMessage }}
       </p>
@@ -21,7 +19,7 @@
       <form @submit.prevent="updateStatus" class="space-y-3">
         <div>
           <label class="block text-sm font-medium mb-1">Update Status:</label>
-          <select v-model="task.status" class="border rounded px-3 py-2 w-full">
+          <select v-model="task.status" class="border rounded px-3 py-2 w-full bg-[#1f1f1f] text-sm text-gray-500 focus:outline-none">
             <option value="pending">Pending</option>
             <option value="in_progress">In Progress</option>
             <option value="completed">Completed</option>
@@ -31,7 +29,7 @@
         <button
           type="submit"
           :disabled="updating"
-          class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded shadow disabled:opacity-50 disabled:cursor-not-allowed"
+          class="bg-[#e65100] hover:bg-[#2e2e2e] text-white text-sm px-4 py-1 mt-4 rounded shadow disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <span v-if="updating">Updating...</span>
           <span v-else>Save Changes</span>

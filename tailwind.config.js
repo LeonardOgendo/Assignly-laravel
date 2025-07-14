@@ -14,14 +14,24 @@ export default {
     'bg-[#2a2a2a]',
     'bg-[#777777]',
     'text-black',
+    'text-[0.9rem]',
+    'bg-[#e65100]',
     'bg-[#333333]',
     'bg-[#444444]',
     'bg-[#555555]',
     'bg-[#666666]',
+    'text-[#e65100]',
+    'py-[2px]',
     'h-[85vh]',
     'min-h-[130px]',
     'hover:bg-[#2e2e2e]',
-    'border-[#777]'
+    'border-[#777]',
+    'min-w-[45%]',
+    'flex-wrap',
+    'border-[#3f3f3f]',
+    'text-[#8b8b8b]',
+    'focus:ring-[#e65100]',
+    'hover:bg-[#e65100]'
   ],
 
     theme: {
