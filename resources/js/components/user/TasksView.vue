@@ -1,7 +1,7 @@
 <!-- resources/js/components/user/TasksView.vue -->
 <template>
   <div>
-    <h2 class="text-xl font-bold mb-1">My Tasks</h2>
+    <h2 class="text-xl text-[#e65100] font-bold mb-1">My Tasks</h2>
     <p class="text-gray-300 text-sm mb-6">
       View your active and completed tasks assigned by admins.
     </p>

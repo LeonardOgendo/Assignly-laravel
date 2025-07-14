@@ -21,6 +21,7 @@ export default {
     'bg-[#555555]',
     'bg-[#666666]',
     'text-[#e65100]',
+    'text-[#777]',
     'py-[2px]',
     'h-[85vh]',
     'min-h-[130px]',

@@ -1,7 +1,7 @@
 <template>
   <section class="space-y-4">
     <div class="flex items-center justify-between">
-      <h2 class="text-lg font-semibold mb-4">Notifications</h2>
+      <h2 class="text-lg text-[#e65100] font-semibold mb-4">Notifications</h2>
       <button
         class="text-sm text-[#e65100] hover:underline"
         @click="markAll"

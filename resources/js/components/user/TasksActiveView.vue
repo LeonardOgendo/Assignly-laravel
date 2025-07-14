@@ -1,7 +1,7 @@
 <!-- resources/js/components/user/TasksActiveView.vue -->
 <template>
   <div class="space-y-4">
-    <h2 class="text-xl font-bold text-white mb-4">Active Tasks</h2>
+    <h2 class="text-xl font-bold text-[#e65100] mb-4">Active Tasks</h2>
 
     <div v-if="loading" class="text-gray-400">Loading tasks...</div>
     <div v-else-if="tasks.length === 0" class="text-gray-400">No active tasks found.</div>

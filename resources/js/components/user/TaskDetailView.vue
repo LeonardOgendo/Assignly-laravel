@@ -3,8 +3,8 @@
     <div v-if="loading" class="text-gray-500">Loading task...</div>
 
     <div v-else-if="task" class="space-y-4 border border-[#3f3f3f] p-4 rounded-md">
-      <h2 class="text-xl font-bold mb-3">{{ task.title }}</h2>
-      <p class="text-[#8b8b8b] mb-2">{{ task.description || 'No description provided.' }}</p>
+      <h2 class="text-xl text-[#e65100] font-bold mb-3">{{ task.title }}</h2>
+      <p class="text-white text-sm mb-2">{{ task.description || 'No description provided.' }}</p>
       <p class="text-xs text-[#8b8b8b]">Due: {{ formatDate(task.deadline) }}</p>
       <p class="text-xs text-[#8b8b8b] mb-3">Assigned By: {{ task.assigner?.name }}</p>
 

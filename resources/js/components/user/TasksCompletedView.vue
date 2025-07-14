@@ -1,7 +1,7 @@
 <!-- resources/js/components/user/TasksCompletedView.vue -->
 <template>
   <div class="max-w-4xl mx-auto">
-    <h2 class="text-xl font-bold mb-4">Completed Tasks</h2>
+    <h2 class="text-xl text-[#e65100] font-bold mb-4">Completed Tasks</h2>
 
     <div v-if="loading" class="text-gray-500">Loading completed tasks...</div>
     <div v-else-if="tasks.length === 0" class="text-gray-600">

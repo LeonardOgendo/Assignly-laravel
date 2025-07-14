@@ -1,14 +1,14 @@
 <!-- resources/js/components/user/TaskReadonlyView.vue -->
 <template>
-  <div class="p-6 max-w-xl mx-auto space-y-4">
+  <div class="max-w-xl space-y-4 border border-[#3f3f3f] p-4 rounded-md">
     <div v-if="loading" class="text-gray-500">Loading task...</div>
 
     <div v-else-if="task">
-      <h2 class="text-2xl font-bold">{{ task.title }}</h2>
-      <p class="text-gray-700">{{ task.description || 'No description provided.' }}</p>
-      <p class="text-sm text-gray-500">Due: {{ formatDate(task.deadline) }}</p>
-      <p class="text-sm text-gray-500">Assigned By: {{ task.assigner?.name }}</p>
-      <p class="mt-4 text-green-600 font-medium">
+      <h2 class="text-xl text-[#e65100] mb-1 font-semibold">{{ task.title }}</h2>
+      <p class="text-white text-sm mb-3">{{ task.description || 'No description provided.' }}</p>
+      <p class="text-sm text-[#8b8b8b]">Due: {{ formatDate(task.deadline) }}</p>
+      <p class="text-sm text-[#8b8b8b]">Assigned By: {{ task.assigner?.name }}</p>
+      <p class="mt-4 text-[#e65100] font-medium">
         This task was marked as <span class="underline">completed</span>.
       </p>
     </div>
