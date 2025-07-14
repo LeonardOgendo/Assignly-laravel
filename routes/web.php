@@ -26,6 +26,9 @@ Route::middleware(['auth', RoleMiddleware::class . ':user'])->group(function () 
     Route::post('/dashboard/user/notifications/{id}/read', [NotificationController::class, 'markAsRead']);
     Route::post('/dashboard/user/notifications/read-all', [NotificationController::class, 'markAll']);
     
+    // user: Metrics
+    Route::get('/dashboard/user/metrics/json', [TaskController::class, 'userTaskMetrics']);
+
     // Catch all routes
     Route::get('/dashboard/user/{any}', fn () => view('user.dashboard'))
         ->where('any', '.*');

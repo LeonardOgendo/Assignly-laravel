@@ -160,5 +160,27 @@ class TaskController extends Controller
         return response()->json($tasks);
     }
 
+    // user: Metrics
+    public function userTaskMetrics()
+    {
+        $userId = Auth::id();
+
+        $pending = Task::where('user_id', $userId)->where('status', 'pending')->count();
+        $inProgress = Task::where('user_id', $userId)->where('status', 'in_progress')->count();
+        $completed = Task::where('user_id', $userId)->where('status', 'completed')->count();
+
+        $upcoming = Task::where('user_id', $userId)
+            ->where('status', '!=', 'completed')
+            ->whereNotNull('deadline')
+            ->orderBy('deadline')
+            ->first();
+
+        return response()->json([
+            'pending' => $pending,
+            'in_progress' => $inProgress,
+            'completed' => $completed,
+            'upcoming_deadline' => optional($upcoming?->deadline)?->diffForHumans(),
+        ]);
+    }
 
 }

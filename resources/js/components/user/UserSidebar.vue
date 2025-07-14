@@ -1,6 +1,6 @@
 <template>
   <aside class="w-60">
-    <nav class="flex flex-col space-y-1">
+    <nav class="flex flex-col space-y-[1rem]">
       <router-link
         v-for="item in menu"
         :key="item.to"
