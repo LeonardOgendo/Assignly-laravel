@@ -3,10 +3,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Task Manager | Landing</title>
+    <title>Assignly | Home</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased">
+<body class="bg-[#222] antialiased">
     <div id="app">
         <!-- Vue will mount here -->
         <landing-page />

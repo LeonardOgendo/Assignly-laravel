@@ -39,7 +39,10 @@ export default {
     'text-[#fd4236]',
     'bg-[#1f1f1f]/90',
     'ml-[6.8rem]',
-    'space-y-[1rem]'
+    'space-y-[1rem]',
+    'mt-12',
+    'mt-5',
+    'min-h-[150px]'
   ],
 
     theme: {
