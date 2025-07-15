@@ -25,7 +25,7 @@
       <h2 class="md:text-[1.3rem] font-bold text-white">
         Stay On Top of Tasks. Focus on What Matters
       </h2>
-      <p class="mt-4 max-w-xl text-gray-300 text-md">
+      <p class="mt-4 max-w-xl text-gray-300 text-sm">
         A minimalist task manager for teams and admins — assign, track, and complete with clarity.
       </p>
 

@@ -39,7 +39,7 @@ export default {
     'text-[#fd4236]',
     'bg-[#1f1f1f]/90',
     'ml-[6.8rem]',
-    'ml-[11.7rem]',
+    'ml-[12rem]',
     'space-y-[1rem]',
     'mt-12',
     'mt-5',

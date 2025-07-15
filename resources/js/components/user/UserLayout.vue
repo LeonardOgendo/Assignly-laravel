@@ -1,12 +1,20 @@
 <template>
   <div class="min-h-screen text-white flex flex-col w-full" :style="responsiveWidth">
+    
     <!-- Top Bar -->
-    <header class="bg-[#1e1e1e] py-4 px-4 md:px-6 flex justify-between items-center shadow-sm relative overflow-hidden">
-      <!-- Left: Brand + Hamburger -->
+    <header class="bg-[#1e1e1e] mb-4 py-4 px-4 md:px-6 flex justify-between items-center shadow-sm relative overflow-hidden">
+      
+    <!-- Brand -->
       <div class="flex items-center space-x-4 min-w-0 flex-shrink-0">
+        <div>
         <h1 class="text-lg md:text-xl font-bold whitespace-nowrap truncate">
           A<span style="letter-spacing: -0.15em">ssig</span><span class="text-[#e65100]">nly</span>
         </h1>
+        
+        <div class="hidden md:block ml-[12rem] items-end space-x-2 h-[3px] min-w-[100px] bg-[#e65100]"></div>
+
+        </div>
+
         <!-- Hamburger -->
         <button @click="toggleMobileSidebar" class="md:hidden focus:outline-none">
           <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -16,16 +24,13 @@
         </button>
       </div>
 
-      <!-- Brand underline (Desktop only) -->
-      <div class="hidden md:block absolute left-[11.7rem] bottom-0 h-[3px] min-w-[100px] bg-[#e65100]"></div>
-
-      <!-- Right: User profile -->
+      <!-- User profile area -->
       <div class="relative flex-shrink-0" @click="toggleDropdown">
         <div class="flex items-center space-x-1 md:space-x-2 cursor-pointer">
-          <svg class="w-5 h-5 text-white bg-[#e65100] p-1 rounded" fill="currentColor" viewBox="0 0 20 20">
+          <svg class="w-6 h-6 text-white bg-[#e65100] p-1 rounded" fill="currentColor" viewBox="0 0 20 20">
             <path d="M10 10a4 4 0 100-8 4 4 0 000 8zM2 18a8 8 0 1116 0H2z" />
           </svg>
-          <span class="text-white text-sm truncate max-w-[6rem] md:max-w-none">{{ user.name }}</span>
+          <span class="text-white text-sm truncate ml-1 max-w-[6rem] md:max-w-none">{{ user.name }}</span>
           <svg
             class="w-4 h-4 text-white transform transition-transform duration-200"
             :class="dropdownOpen ? 'rotate-90' : 'rotate-0'"
