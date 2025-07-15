@@ -51,7 +51,10 @@ export default {
     'md:w-[30%]',
     'md:flex-row',
     'sm:min-w-[45%]',
-    'sm:w-[45%]'
+    'sm:w-[45%]',
+    'md:text-sm',
+    'md:p-3',
+    
   ],
 
     theme: {

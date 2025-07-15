@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="text-xl font-bold mb-2">Manage Users</h2>
+    <h2 class="text-xl text-[#e65100] font-bold mb-2">Manage Users</h2>
     <p class="text-sm text-gray-300 mb-6">View and Create platform users</p>
 
     <div class="flex flex-wrap gap-4">

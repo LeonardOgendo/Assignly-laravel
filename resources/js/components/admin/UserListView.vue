@@ -5,7 +5,7 @@
     <!-- User Table -->
     <div class="overflow-x-auto border border-[#3f3f3f] rounded-md shadow">
       <table class="w-full bg-transparent table-auto text-xs md:text-sm text-white">
-        <thead class="bg-[#e65100] text-white uppercase text-[0.65rem] md:text-[0.75rem]">
+        <thead class="bg-[#e65100] text-white uppercase text-[0.65rem] md:text-sm">
           <tr>
             <th class="p-2 md:p-3 text-left">#</th>
             <th class="p-2 md:p-3 text-left">Name</th>
@@ -26,7 +26,7 @@
             <td class="p-2 md:p-3">
               <span
                 :class="[
-                  'text-[0.65rem] md:text-xs px-2 py-1 rounded font-medium',
+                  'text-[0.65rem] md:text-sm px-2 py-1 rounded font-medium',
                   user.role === 'admin'
                     ? 'bg-green-600/20 text-green-400 border border-green-400'
                     : 'bg-blue-600/20 text-blue-400 border border-blue-400',
@@ -38,7 +38,7 @@
             <td class="p-2 md:p-3 text-right space-x-2 md:space-x-4">
               <button
                 @click="openEdit(user)"
-                class="text-blue-500 hover:underline hover:text-indigo-300 transition"
+                class="text-blue-500 hover:underline mr-2 hover:text-indigo-300 transition"
               >
                 Edit
               </button>
@@ -59,7 +59,7 @@
   v-if="editingUser"
   class="fixed inset-0 z-50 flex items-center justify-center px-4 py-8 bg-black/40 backdrop-blur-sm"
 >
-  <!-- Opaque modal card (only around content) -->
+  <!-- Opaque modal background -->
   <div class="bg-[#1f1f1f]/90 backdrop-blur-md text-white border border-[#555] shadow-lg rounded-lg w-full max-w-md max-h-[90vh] overflow-y-auto p-6">
     <h3 class="text-lg text-[#e65100] font-semibold mb-4">Edit User</h3>
 

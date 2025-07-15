@@ -4,6 +4,7 @@
 
     <!-- Cards container -->
     <div class="flex flex-col sm:flex-row flex-wrap gap-4">
+      
       <!-- Total Users -->
       <div
         class="w-full md:flex-1 sm:w-[45%] cursor-pointer"
@@ -30,7 +31,7 @@
         </div>
       </div>
 
-      <!-- Pending Reviews (read‑only) -->
+      <!-- Pending Reviews -->
       <div class="w-full md:flex-1 sm:w-[45%]">
         <div class="p-4 bg-[#222] shadow border border-[#444] text-white rounded-lg">
           <h3 class="text-lg font-semibold">Pending Reviews</h3>
