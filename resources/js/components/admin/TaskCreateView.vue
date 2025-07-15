@@ -9,7 +9,7 @@
         <input
           v-model="form.title"
           type="text"
-          class="w-full bg-[#c2c2c2] text-gray-500 border border-gray-400 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+          class="w-full bg-[#c2c2c2] text-gray-500 border border-gray-400 px-3 py-2 rounded focus:outline-none focus:ring-1 focus:ring-[#e65100] focus:border-[#e65100]"
           required
         />
         <p v-if="errors.title" class="text-sm text-red-500">{{ errors.title }}</p>
@@ -20,7 +20,8 @@
         <label class="block mb-1 font-medium text-white">Description</label>
         <textarea
           v-model="form.description"
-          class="w-full text-gray-500 border border-gray-400 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+          class="w-full text-gray-500 border border-gray-400 px-3 py-2 rounded focus:outline-none focus:ring-1 focus:ring-[#e65100] focus:border-[#e65100]"
+          required
         ></textarea>
       </div>
 
@@ -30,7 +31,8 @@
         <input
           v-model="form.deadline"
           type="datetime-local"
-          class="w-full bg-[#c2c2c2] text-gray-500 border border-gray-400 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+          class="w-full bg-[#c2c2c2] text-gray-500 border border-gray-400 px-3 py-2 rounded focus:outline-none focus:ring-1 focus:ring-[#e65100] focus:border-[#e65100]"
+          required
         />
       </div>
 
@@ -39,7 +41,7 @@
         <label class="block mb-1 font-medium text-white">Assign To</label>
         <select
           v-model="form.user_id"
-          class="w-full bg-[#c2c2c2] text-gray-500 border border-gray-400 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+          class="w-full bg-[#c2c2c2] text-gray-500 border border-gray-400 px-3 py-2 rounded focus:outline-none focus:ring-1 focus:ring-[#e65100] focus:border-[#e65100]"
           required
         >
           <option disabled value="">-- Select User --</option>
