@@ -7,7 +7,7 @@
         v-for="card in cards"
         :key="card.title"
         @click="handleClick(card.title)"
-        class="bg-[#222] w-full sm:min-w-[45%] sm:flex-1 mb-6 shadow border border-[#444] p-6 rounded-lg cursor-pointer hover:opacity-90 transition"
+        class="bg-[#222] w-full sm:min-w-[45%] sm:flex-1 mb-5 shadow border border-[#444] p-6 rounded-lg cursor-pointer hover:opacity-90 transition"
       >
         <h3 class="text-sm mb-1">{{ card.title }}</h3>
         <p class="text-3xl font-bold">{{ card.count }}</p>
