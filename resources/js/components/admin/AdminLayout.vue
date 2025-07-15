@@ -1,14 +1,24 @@
 <template>
   <div class="min-h-screen text-white flex flex-col w-full" :style="responsiveWidth">
-    <!-- ─────────── Top Bar ─────────── -->
+
     <header
-      class="bg-[#1e1e1e] py-4 px-4 md:px-6 flex justify-between items-center shadow-sm relative overflow-hidden"
+      class="bg-[#1e1e1e] py-4 px-4 md:px-6 mb-4 flex justify-between items-center shadow-sm relative"
     >
       <!-- Left: Brand + Hamburger -->
       <div class="flex items-center space-x-4 min-w-0 flex-shrink-0">
-        <h1 class="text-lg md:text-xl font-bold whitespace-nowrap truncate">
-          A<span style="letter-spacing:-0.15em">ssig</span><span class="text-[#e65100]">nly</span>
-        </h1>
+        <div class="flex">
+          <h1 class="text-lg md:text-xl font-bold whitespace-nowrap truncate">
+            A<span style="letter-spacing:-0.15em">ssig</span><span class="text-[#e65100]">nly</span>
+          </h1>
+
+            <!-- Dashboard underline -->
+          <div class="hidden md:flex ml-[6.8rem] items-end space-x-2">
+            <span class="border-b-2 border-[#e65100] pb-3 font-bold">
+              Admin <span class="text-[#e65100]">Dashboard</span>
+            </span>
+          </div>
+        </div>
+
 
         <!-- Hamburger (mobile only) -->
         <button @click="toggleMobileSidebar" class="md:hidden focus:outline-none">
@@ -19,20 +29,14 @@
         </button>
       </div>
 
-      <!-- Brand underline + “Admin Dashboard” label -->
-      <div class="hidden md:flex items-end space-x-2">
-        <span class="border-b-2 border-[#e65100] pb-[2px] font-bold">
-          Admin <span class="text-[#e65100]">Dashboard</span>
-        </span>
-      </div>
-
-      <!-- Right: User profile + dropdown -->
+     
+      <!-- User profile area + dropdown -->
       <div class="relative flex-shrink-0" @click="toggleDropdown">
         <div class="flex items-center space-x-1 md:space-x-2 cursor-pointer">
-          <svg class="w-5 h-5 text-white bg-[#e65100] p-1 rounded" fill="currentColor" viewBox="0 0 20 20">
+          <svg class="w-6 h-6 text-white bg-[#e65100] p-1 rounded" fill="currentColor" viewBox="0 0 20 20">
             <path d="M10 10a4 4 0 100-8 4 4 0 000 8zM2 18a8 8 0 1116 0H2z" />
           </svg>
-          <span class="text-white text-sm truncate max-w-[6rem] md:max-w-none">{{ user.first_name }}</span>
+          <span class="text-white ml-1 text-sm truncate max-w-[6rem] md:max-w-none">{{ user.first_name }}</span>
           <svg
             class="w-4 h-4 text-white transform transition-transform duration-200"
             :class="dropdownOpen ? 'rotate-90' : 'rotate-0'"
@@ -48,16 +52,16 @@
         <!-- Dropdown -->
         <div
           v-if="dropdownOpen"
-          class="absolute right-0 mt-2 w-32 bg-[#2a2a2a] border border-gray-700 rounded shadow-lg z-60"
+          class="absolute right-0 mt-1 w-32 bg-[#2a2a2a] border border-gray-700 rounded shadow-lg z-60"
         >
-          <button @click="logout" class="w-full text-left px-4 py-2 text-sm hover:bg-red-600 rounded">
+          <button @click="logout" class="w-full text-left px-4 py-1 text-sm hover:bg-red-600 rounded">
             Logout
           </button>
         </div>
       </div>
     </header>
 
-    <!-- ─────────── Body: Sidebar + Content ─────────── -->
+    <!-- Sidebar + Content -->
     <div class="flex flex-1 relative">
       <!-- Desktop sidebar -->
       <aside class="hidden md:flex w-64 bg-[#1b1b1b] flex-col py-6 px-4">
@@ -98,13 +102,13 @@ const SidebarNav = {
   name: 'SidebarNav',
   components: { HomeIcon, ClipboardListIcon, UsersIcon },
   template: `
-    <nav class="space-y-4">
+    <nav class="space-y-[1rem]">
       <router-link
         to="/dashboard/admin"
         exact
         class="flex items-center space-x-3 px-3 py-2 rounded hover:bg-gray-800"
       >
-        <HomeIcon class="w-5 h-5 text-[#e65100]" />
+        <HomeIcon class="w-5 h-5 text-[#e65100] mr-2" />
         <span>Dashboard</span>
       </router-link>
 
@@ -112,7 +116,7 @@ const SidebarNav = {
         to="/dashboard/admin/tasks"
         class="flex items-center space-x-3 px-3 py-2 rounded hover:bg-gray-800"
       >
-        <ClipboardListIcon class="w-5 h-5 text-[#e65100]" />
+        <ClipboardListIcon class="w-5 h-5 text-[#e65100] mr-2" />
         <span>Manage Tasks</span>
       </router-link>
 
@@ -120,7 +124,7 @@ const SidebarNav = {
         to="/dashboard/admin/users"
         class="flex items-center space-x-3 px-3 py-2 rounded hover:bg-gray-800"
       >
-        <UsersIcon class="w-5 h-5 text-[#e65100]" />
+        <UsersIcon class="w-5 h-5 text-[#e65100] mr-2" />
         <span>Manage Users</span>
       </router-link>
     </nav>
