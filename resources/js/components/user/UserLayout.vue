@@ -2,7 +2,7 @@
   <div class="min-h-screen text-white flex flex-col w-full" :style="responsiveWidth">
     
     <!-- Top Bar -->
-    <header class="bg-[#1e1e1e] mb-4 py-4 px-4 md:px-6 flex justify-between items-center shadow-sm relative overflow-hidden">
+    <header class="bg-[#1e1e1e] mb-4 py-4 px-4 md:px-6 flex justify-between items-center shadow-sm relative">
       
     <!-- Brand -->
       <div class="flex items-center space-x-4 min-w-0 flex-shrink-0">
@@ -50,7 +50,7 @@
           v-if="dropdownOpen"
           class="absolute right-0 mt-2 w-32 bg-[#2a2a2a] border border-gray-700 rounded shadow-lg z-50"
         >
-          <button @click="logout" class="w-full text-left px-4 py-2 text-sm hover:bg-red-600 rounded">
+          <button @click="logout" class="w-full text-left px-4 py-1 text-sm hover:bg-red-600 rounded">
             Logout
           </button>
         </div>
