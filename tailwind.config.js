@@ -54,6 +54,7 @@ export default {
     'sm:w-[45%]',
     'md:text-sm',
     'md:p-3',
+    'focus:ring-[#e65100]'
     
   ],
 

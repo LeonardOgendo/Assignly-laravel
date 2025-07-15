@@ -24,7 +24,7 @@
             <div class="mb-4">
                 <label for="name" class="block text-sm font-medium text-white">Name</label>
                 <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus
-                    class="mt-1 block w-full bg-[#2a2a2a] text-white border-gray-300 rounded-md shadow-sm
+                    class="mt-1 block w-full bg-[#2a2a2a] text-white border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-[#e65100] focus:border-[#e65100]
                     @error('name') border-red-500 @enderror" />
                 @error('name')
                     <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
@@ -35,7 +35,7 @@
             <div class="mb-4">
                 <label for="email" class="block text-sm font-medium text-white">Email</label>
                 <input id="email" type="email" name="email" value="{{ old('email') }}" required
-                    class="mt-1 block w-full bg-[#2a2a2a] text-white border-gray-300 rounded-md shadow-sm
+                    class="mt-1 block w-full bg-[#2a2a2a] text-white border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-[#e65100] focus:border-[#e65100]
                     @error('email') border-red-500 @enderror" />
                 @error('email')
                     <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
@@ -46,7 +46,7 @@
             <div class="mb-4">
                 <label for="password" class="block text-sm font-medium text-white">Password</label>
                 <input id="password" type="password" name="password" required
-                    class="mt-1 block w-full bg-[#2a2a2a] text-white border-gray-300 rounded-md shadow-sm
+                    class="mt-1 block w-full bg-[#2a2a2a] text-white border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-[#e65100] focus:border-[#e65100]
                     @error('password') border-red-500 @enderror" />
                 @error('password')
                     <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
@@ -57,7 +57,7 @@
             <div class="mb-6">
                 <label for="password_confirmation" class="block text-sm font-medium text-white">Confirm Password</label>
                 <input id="password_confirmation" type="password" name="password_confirmation" required
-                    class="mt-1 block w-full bg-[#2a2a2a] text-white border-gray-300 rounded-md shadow-sm
+                    class="mt-1 block w-full bg-[#2a2a2a] text-white border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-[#e65100] focus:border-[#e65100]
                     @error('password_confirmation') border-red-500 @enderror" />
                 @error('password_confirmation')
                     <p class="text-sm text-red-500 mt-1">{{ $message }}</p>

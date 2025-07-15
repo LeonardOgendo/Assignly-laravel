@@ -32,7 +32,7 @@
                 <label for="email" class="block font-medium text-sm text-white">Email</label>
                 <input id="email" type="email" name="email"
                     value="{{ old('email') }}" required autofocus
-                    class="mt-1 block w-full bg-[#2a2a2a] text-white border-gray-300 rounded-md shadow-sm
+                    class="mt-1 block w-full bg-[#2a2a2a] text-white border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-[#e65100] focus:border-[#e65100]
                     @error('email') border-red-500 @enderror">
 
                 @error('email')
@@ -44,7 +44,7 @@
             <div class="mb-6">
                 <label for="password" class="block font-medium text-sm text-white">Password</label>
                 <input id="password" type="password" name="password" required
-                    class="mt-1 block w-full bg-[#2a2a2a] text-white border-gray-300 rounded-md shadow-sm
+                    class="mt-1 block w-full bg-[#2a2a2a] text-white border-gray-300 rounded-md shadow-sm focus:ring-[#e65100] focus:border-[#e65100]
                     @error('password') border-red-500 @enderror">
 
                 @error('password')
