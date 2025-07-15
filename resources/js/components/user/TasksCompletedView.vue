@@ -1,4 +1,3 @@
-<!-- resources/js/components/user/TasksCompletedView.vue -->
 <template>
   <div class="max-w-4xl mx-auto">
     <h2 class="text-xl text-[#e65100] font-bold mb-4">Completed Tasks</h2>

@@ -12,7 +12,7 @@ class Task extends Model
 
     protected $fillable = [
         'user_id',         // Assignee
-        'assigned_by',     // Admin or user who created the task
+        'assigned_by', 
         'title',
         'description',
         'status',
@@ -23,17 +23,13 @@ class Task extends Model
         'deadline' => 'datetime',
     ];
 
-    /**
-     * The user to whom the task is assigned.
-     */
+  
     public function assignee()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    /**
-     * The user (admin) who assigned the task.
-     */
+    
     public function assigner()
     {
         return $this->belongsTo(User::class, 'assigned_by');

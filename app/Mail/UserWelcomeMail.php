@@ -15,17 +15,17 @@ class UserWelcomeMail extends Mailable
     public $password;
 
     
-    // Create a new message instance.
+    // Message instance
     public function __construct(User $user, string $password)
     {
         $this->user = $user;
         $this->password = $password;
     }
 
-    // Build the message
+    
     public function build()
     {
-        return $this->subject('Welcome to the Platform')
+        return $this->subject('Welcome to the Assignly')
                     ->view('emails.user_welcome');
     }
 }

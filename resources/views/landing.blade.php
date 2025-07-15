@@ -9,7 +9,6 @@
 </head>
 <body class="bg-[#222] antialiased">
     <div id="app">
-        <!-- Vue will mount here -->
         <landing-page />
     </div>
 </body>

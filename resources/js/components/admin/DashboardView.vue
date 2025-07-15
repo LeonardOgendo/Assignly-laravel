@@ -10,22 +10,17 @@
         class="w-full md:flex-1 sm:w-[45%] cursor-pointer"
         @click="$router.push('/dashboard/admin/users/list')"
       >
-        <div
-          class="p-4 bg-[#222] shadow border border-[#444] text-white rounded-lg hover:bg-[#2a2a2a] transition"
-        >
+        <div class="p-4 bg-[#222] shadow border border-[#444] text-white rounded-lg hover:bg-[#2a2a2a] transition">
           <h3 class="text-lg font-semibold">Total Users</h3>
           <p class="text-3xl font-bold">{{ metrics.totalUsers ?? '–' }}</p>
         </div>
       </div>
 
       <!-- Total Tasks -->
-      <div
-        class="w-full md:flex-1 sm:w-[45%] cursor-pointer"
+      <div class="w-full md:flex-1 sm:w-[45%] cursor-pointer"
         @click="$router.push('/dashboard/admin/tasks/view')"
       >
-        <div
-          class="p-4 bg-[#222] shadow border border-[#444] text-white rounded-lg hover:bg-[#2a2a2a] transition"
-        >
+        <div class="p-4 bg-[#222] shadow border border-[#444] text-white rounded-lg hover:bg-[#2a2a2a] transition">
           <h3 class="text-lg font-semibold">Total Tasks</h3>
           <p class="text-3xl font-bold">{{ metrics.totalTasks ?? '–' }}</p>
         </div>
@@ -44,9 +39,7 @@
         class="w-full md:flex-1 sm:w-[45%] cursor-pointer"
         @click="$router.push({ path: '/dashboard/admin/tasks/view', query: { filter: 'completed' } })"
       >
-        <div
-          class="p-4 bg-[#222] shadow border border-[#444] text-white rounded-lg hover:bg-[#2a2a2a] transition"
-        >
+        <div class="p-4 bg-[#222] shadow border border-[#444] text-white rounded-lg hover:bg-[#2a2a2a] transition">
           <h3 class="text-lg font-semibold">Completed Tasks</h3>
           <p class="text-3xl font-bold">{{ metrics.completedTasks ?? '–' }}</p>
         </div>

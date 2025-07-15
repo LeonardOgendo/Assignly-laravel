@@ -1,17 +1,16 @@
 <template>
   <div class="min-h-screen text-white flex flex-col w-full" :style="responsiveWidth">
 
-    <header
-      class="bg-[#1e1e1e] py-4 px-4 md:px-6 mb-4 flex justify-between items-center shadow-sm relative"
-    >
-      <!-- Left: Brand + Hamburger -->
+    <header class="bg-[#1e1e1e] py-4 px-4 md:px-6 mb-4 flex justify-between items-center shadow-sm relative">
+      
+      <!-- Brand name-->
       <div class="flex items-center space-x-4 min-w-0 flex-shrink-0">
         <div class="flex">
           <h1 class="text-lg md:text-xl font-bold whitespace-nowrap truncate">
             A<span style="letter-spacing:-0.15em">ssig</span><span class="text-[#e65100]">nly</span>
           </h1>
 
-            <!-- Dashboard underline -->
+          <!-- Dashboard underline -->
           <div class="hidden md:flex ml-[6.8rem] items-end space-x-2">
             <span class="border-b-2 border-[#e65100] pb-3 font-bold">
               Admin <span class="text-[#e65100]">Dashboard</span>
@@ -30,7 +29,7 @@
       </div>
 
      
-      <!-- User profile area + dropdown -->
+      <!-- User profile area -->
       <div class="relative flex-shrink-0" @click="toggleDropdown">
         <div class="flex items-center space-x-1 md:space-x-2 cursor-pointer">
           <svg class="w-6 h-6 text-white bg-[#e65100] p-1 rounded" fill="currentColor" viewBox="0 0 20 20">
@@ -49,7 +48,7 @@
           </svg>
         </div>
 
-        <!-- Dropdown -->
+        <!-- Logout -->
         <div
           v-if="dropdownOpen"
           class="absolute right-0 mt-1 w-32 bg-[#2a2a2a] border border-gray-700 rounded shadow-lg z-60"
@@ -63,6 +62,7 @@
 
     <!-- Sidebar + Content -->
     <div class="flex flex-1 relative">
+      
       <!-- Desktop sidebar -->
       <aside class="hidden md:flex w-64 bg-[#1b1b1b] flex-col py-6 px-4">
         <SidebarNav />
@@ -173,7 +173,7 @@ export default {
       this.mobileSidebarOpen = !this.mobileSidebarOpen
     },
 
-    /* auth */
+    /* logout */
     async logout() {
       try {
         await axios.post('/logout')

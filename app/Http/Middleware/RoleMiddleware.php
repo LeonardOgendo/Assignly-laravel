@@ -16,6 +16,7 @@ class RoleMiddleware
      * @param  string    $role  One required role (e.g. 'admin' or 'user')
      * @return \Symfony\Component\HttpFoundation\Response
      */
+    
     public function handle(Request $request, Closure $next, string $role): Response
     {
         // If no user is logged in OR the role doesn't match → block.

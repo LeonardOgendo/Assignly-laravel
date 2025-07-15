@@ -1,4 +1,3 @@
-<!-- resources/js/components/user/TaskReadonlyView.vue -->
 <template>
   <div class="max-w-xl space-y-4 border border-[#3f3f3f] p-4 rounded-md">
     <div v-if="loading" class="text-gray-500">Loading task...</div>

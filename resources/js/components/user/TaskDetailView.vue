@@ -6,7 +6,7 @@
       v-else-if="task"
       class="space-y-4 border border-[#3f3f3f] p-4 sm:p-6 rounded-md bg-[#1e1e1e] shadow"
     >
-      <!-- Title -->
+
       <h2 class="text-lg sm:text-xl text-[#e65100] font-bold mb-2 sm:mb-3">{{ task.title }}</h2>
 
       <!-- Description -->
@@ -14,11 +14,10 @@
         {{ task.description || 'No description provided.' }}
       </p>
 
-      <!-- Meta info -->
       <p class="text-xs sm:text-sm text-[#8b8b8b]">Due: {{ formatDate(task.deadline) }}</p>
       <p class="text-xs sm:text-sm text-[#8b8b8b] mb-3">Assigned By: {{ task.assigner?.name }}</p>
 
-      <!-- Feedback messages -->
+      <!-- Feedback -->
       <p v-if="successMessage" class="text-green-600 font-medium text-sm sm:text-base">
         ✅ {{ successMessage }}
       </p>
@@ -40,7 +39,7 @@
           </select>
         </div>
 
-        <!-- Submit Button -->
+
         <button
           type="submit"
           :disabled="updating"

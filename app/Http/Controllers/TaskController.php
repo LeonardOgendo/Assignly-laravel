@@ -16,9 +16,8 @@ class TaskController extends Controller
 {
     use AuthorizesRequests;
 
-    /**
-     * Admin-only: return all tasks as JSON (Vue will render them)
-     */
+
+    // Admin-only: return all tasks as JSON
     public function index()
     {
         $this->authorize('viewAny', Task::class);
@@ -28,9 +27,8 @@ class TaskController extends Controller
         return response()->json($tasks);
     }
 
-    /**
-     * Show a single task (user or admin)
-     */
+    
+    // Show a single task (user or admin)
     public function show(Task $task)
     {
         $this->authorize('view', $task);
@@ -51,9 +49,9 @@ class TaskController extends Controller
         ]);
     }
 
-    /**
-     * Store a new task + notify assignee
-     */
+    
+    // Store a new task + notify assignee
+     
     public function store(StoreTaskRequest $request)
     {
         $this->authorize('create', Task::class);
@@ -71,9 +69,9 @@ class TaskController extends Controller
         ], 201);
     }
 
-    /**
-     * Edit a task — return task + user list
-     */
+    
+    // Edit a task — return task + user list
+     
     public function edit(Task $task)
     {
         $this->authorize('update', $task);
@@ -86,9 +84,8 @@ class TaskController extends Controller
         ]);
     }
 
-    /**
-     * Update an existing task
-     */
+    // Update an existing task
+    
     public function update(UpdateTaskRequest $request, Task $task)
     {
         $this->authorize('update', $task);
@@ -102,10 +99,7 @@ class TaskController extends Controller
     }
 
 
-
-    /**
-     * Delete a task
-     */
+    // Delete a task
     public function destroy(Task $task)
     {
         $this->authorize('delete', $task);
@@ -116,6 +110,7 @@ class TaskController extends Controller
             'message' => 'Task deleted.',
         ]);
     }
+
     /**
      * Return tasks assigned to the currently authenticated user
      * excluding completed ones.
@@ -142,7 +137,7 @@ class TaskController extends Controller
 
         return response()->json([
             'message' => 'Status updated.',
-            'task'    => $task->fresh(),      // reflect new status
+            'task'    => $task->fresh(), 
         ]);
     }
 

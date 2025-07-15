@@ -8,17 +8,16 @@ use Illuminate\Notifications\DatabaseNotification;
 
 class NotificationController extends Controller
 {
-    /**
-     * Return unread notifications for the authenticated user.
-     */
+    
+    // Return unread notifications for the authenticated user
     public function unread()
     {
         return Auth::user()->unreadNotifications;
     }
 
-    /**
-     * Mark a specific notification as read.
-     */
+    
+    // Mark notification as read.
+    
     public function markAsRead($id)
     {
         $notification = DatabaseNotification::findOrFail($id);
@@ -32,9 +31,8 @@ class NotificationController extends Controller
         return response()->json(['message' => 'Notification marked as read.']);
     }
 
-    /**
-     * Optional: Mark all unread notifications as read.
-     */
+    
+    // Mark all unread notifications as read
     public function markAll()
     {
         $user = Auth::user();

@@ -8,7 +8,6 @@ class UpdateTaskStatusRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        // TaskPolicy handles final check in the controller.
         return true;
     }
 
