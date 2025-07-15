@@ -32,21 +32,21 @@
       <!-- Feature Cards -->
       <div class="mt-12 flex flex-col md:flex-row gap-6 justify-center items-center w-full max-w-5xl">
 
-        <div class="bg-[#2a2a2a] rounded-lg min-h-[150px] p-6 w-72 md:w-[30%] shadow hover:shadow-lg transition">
+        <div class="bg-[#2a2a2a] border border-[#777] rounded-lg min-h-[150px] p-6 w-72 md:w-[30%] shadow hover:shadow-lg transition">
           <h3 class="text-lg font-semibold mb-2 text-[#e65100]">Tasks Assignment</h3>
           <p class="text-sm text-gray-300">
             Admins assign tasks with deadlines — users get clarity, fast.
           </p>
         </div>
 
-        <div class="bg-[#2a2a2a] rounded-lg min-h-[150px] p-6 w-72 md:w-[30%] shadow hover:shadow-lg transition">
+        <div class="bg-[#2a2a2a] border border-[#777] rounded-lg min-h-[150px] p-6 w-72 md:w-[30%] shadow hover:shadow-lg transition">
           <h3 class="text-lg font-semibold mb-2 text-[#e65100]">Email Notifications</h3>
           <p class="text-sm text-gray-300">
             Get notified instantly when a new task is assigned to you.
           </p>
         </div>
 
-        <div class="bg-[#2a2a2a] rounded-lg min-h-[150px] p-6 w-72 md:w-[30%] shadow hover:shadow-lg transition">
+        <div class="bg-[#2a2a2a] border border-[#777] rounded-lg min-h-[150px] p-6 w-72 md:w-[30%] shadow hover:shadow-lg transition">
           <h3 class="text-lg font-semibold mb-2 text-[#e65100]">Status Updates</h3>
           <p class="text-sm text-gray-300">
             Update task progress from Pending to Completed in one click.
