@@ -1,10 +1,10 @@
 <template>
   <div
-    class="h-screen text-white flex flex-col w-full bg-[#0f172a]"
+    class="h-screen text-white w-full"
     :style="responsiveWidth"
   >
     <!-- Top Navbar -->
-    <header class="w-full mt-5">
+    <header class="w-full mt-2">
       <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         <h1 class="text-xl font-bold">
           A<span style="letter-spacing: -0.15em">ssig</span><span class="text-[#e65100]">nly</span>
@@ -21,7 +21,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="flex-1 flex flex-col justify-center mt-12 items-center text-center px-4">
+    <section class="flex-1 mt-[9%] flex flex-col justify-center items-center text-center px-4">
       <h2 class="md:text-[1.3rem] font-bold text-white">
         Stay On Top of Tasks. Focus on What Matters
       </h2>

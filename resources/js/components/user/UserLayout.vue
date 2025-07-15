@@ -2,7 +2,7 @@
   <div class="min-h-screen text-white flex flex-col w-full" :style="responsiveWidth">
     
     <!-- Top Bar -->
-    <header class="bg-[#1e1e1e] mb-4 py-4 px-4 md:px-6 flex justify-between items-center shadow-sm relative">
+    <header class="mb-4 py-4 px-4 md:px-6 flex justify-between items-center shadow-sm relative">
       
     <!-- Brand -->
       <div class="flex items-center space-x-4 min-w-0 flex-shrink-0">
@@ -11,7 +11,7 @@
           A<span style="letter-spacing: -0.15em">ssig</span><span class="text-[#e65100]">nly</span>
         </h1>
         
-        <div class="hidden md:block ml-[12rem] items-end space-x-2 h-[3px] min-w-[100px] bg-[#e65100]"></div>
+        <div class="hidden md:block ml-[15rem] items-end space-x-2 h-[3px] min-w-[100px] bg-[#e65100]"></div>
 
         </div>
 
@@ -60,7 +60,7 @@
     <!-- Layout Body -->
     <div class="flex flex-1 relative">
       <!-- Sidebar (Desktop) -->
-      <aside class="hidden md:flex w-64 bg-[#1b1b1b] flex-col py-6 px-4">
+      <aside class="hidden md:flex w-50 flex-col py-6 px-2">
         <user-sidebar />
       </aside>
 

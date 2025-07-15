@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen text-white flex flex-col w-full" :style="responsiveWidth">
 
-    <header class="bg-[#1e1e1e] py-4 px-4 md:px-6 mb-4 flex justify-between items-center shadow-sm relative">
+    <header class="py-4 px-4 md:px-6 mb-4 flex justify-between items-center shadow-sm relative">
       
       <!-- Brand name-->
       <div class="flex items-center space-x-4 min-w-0 flex-shrink-0">
@@ -11,7 +11,7 @@
           </h1>
 
           <!-- Dashboard underline -->
-          <div class="hidden md:flex ml-[6.8rem] items-end space-x-2">
+          <div class="hidden md:flex ml-[8.7rem] items-end space-x-2">
             <span class="border-b-2 border-[#e65100] pb-3 font-bold">
               Admin <span class="text-[#e65100]">Dashboard</span>
             </span>
@@ -64,7 +64,7 @@
     <div class="flex flex-1 relative">
       
       <!-- Desktop sidebar -->
-      <aside class="hidden md:flex w-64 bg-[#1b1b1b] flex-col py-6 px-4">
+      <aside class="hidden md:flex w-60 flex-col py-6 px-4">
         <SidebarNav />
       </aside>
 
@@ -106,7 +106,7 @@ const SidebarNav = {
       <router-link
         to="/dashboard/admin"
         exact
-        class="flex items-center space-x-3 px-3 py-2 rounded hover:bg-gray-800"
+        class="flex items-center space-x-3 px-3 py-2 rounded hover:bg-[#2a2a2a]"
       >
         <HomeIcon class="w-5 h-5 text-[#e65100] mr-2" />
         <span>Dashboard</span>
@@ -114,7 +114,7 @@ const SidebarNav = {
 
       <router-link
         to="/dashboard/admin/tasks"
-        class="flex items-center space-x-3 px-3 py-2 rounded hover:bg-gray-800"
+        class="flex items-center space-x-3 px-3 py-2 rounded hover:bg-[#2a2a2a]"
       >
         <ClipboardListIcon class="w-5 h-5 text-[#e65100] mr-2" />
         <span>Manage Tasks</span>
@@ -122,7 +122,7 @@ const SidebarNav = {
 
       <router-link
         to="/dashboard/admin/users"
-        class="flex items-center space-x-3 px-3 py-2 rounded hover:bg-gray-800"
+        class="flex items-center space-x-3 px-3 py-2 rounded hover:bg-[#2a2a2a]"
       >
         <UsersIcon class="w-5 h-5 text-[#e65100] mr-2" />
         <span>Manage Users</span>

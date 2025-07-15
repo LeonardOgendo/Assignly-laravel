@@ -19,7 +19,7 @@
           v-model="form.name"
           type="text"
           placeholder="Leon Devolapa"
-          class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-[#e65100] focus:border-[#e65100]"
+          class="w-full border bg-[#2a2a2a] text-white rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-[#e65100] focus:border-[#e65100]"
         />
         <p v-if="errors.name" class="text-sm text-red-600 mt-1">{{ errors.name }}</p>
       </div>
@@ -30,7 +30,7 @@
           v-model="form.email"
           type="email"
           placeholder="Enter valid email"
-          class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-[#e65100] focus:border-[#e65100]"
+          class="w-full border bg-[#2a2a2a] text-white rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-[#e65100] focus:border-[#e65100]"
         />
         <p v-if="errors.email" class="text-sm text-red-600 mt-1">{{ errors.email }}</p>
       </div>

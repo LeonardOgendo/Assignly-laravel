@@ -5,23 +5,23 @@
     <form @submit.prevent="updateTask">
       <div class="mb-4">
         <label class="block mb-1">Title</label>
-        <input v-model="form.title" type="text" class="w-full border text-gray-500 px-3 py-1 rounded focus:outline-none focus:ring-1 focus:ring-[#e65100] focus:border-[#e65100]" required />
+        <input v-model="form.title" type="text" class="w-full border bg-[#2a2a2a] text-white px-3 py-1 rounded focus:outline-none focus:ring-1 focus:ring-[#e65100] focus:border-[#e65100]" required />
         <p v-if="errors.title" class="text-sm text-red-600">{{ errors.title }}</p>
       </div>
 
       <div class="mb-4">
         <label class="block mb-1">Description</label>
-        <textarea v-model="form.description" class="w-full border text-gray-500 px-3 py-1 rounded focus:outline-none focus:ring-1 focus:ring-[#e65100] focus:border-[#e65100]" required></textarea>
+        <textarea v-model="form.description" class="w-full border bg-[#2a2a2a] text-white px-3 py-1 rounded focus:outline-none focus:ring-1 focus:ring-[#e65100] focus:border-[#e65100]" required></textarea>
       </div>
 
       <div class="mb-4">
         <label class="block mb-1">Deadline</label>
-        <input v-model="form.deadline" type="datetime-local" class="w-full border text-gray-500 px-3 py-1 rounded focus:outline-none focus:ring-1 focus:ring-[#e65100] focus:border-[#e65100]" required />
+        <input v-model="form.deadline" type="datetime-local" class="w-full border bg-[#2a2a2a] text-white px-3 py-1 rounded focus:outline-none focus:ring-1 focus:ring-[#e65100] focus:border-[#e65100]" required />
       </div>
 
       <div class="mb-6">
         <label class="block mb-1">Assign To</label>
-        <select v-model="form.user_id" class="w-full border text-gray-500 px-3 py-1 rounded focus:outline-none focus:ring-1 focus:ring-[#e65100] focus:border-[#e65100]" required>
+        <select v-model="form.user_id" class="w-full border bg-[#2a2a2a] text-white px-3 py-1 rounded focus:outline-none focus:ring-1 focus:ring-[#e65100] focus:border-[#e65100]" required>
           <option disabled value="">-- Select User --</option>
           <option v-for="user in users" :key="user.id" :value="user.id">
             {{ user.name }} ({{ user.email }})
@@ -32,7 +32,7 @@
 
       <div class="mb-6">
         <label class="block mb-1">Status</label>
-        <select v-model="form.status" class="w-full border text-gray-500 px-3 py-1 rounded focus:outline-none focus:ring-1 focus:ring-[#e65100] focus:border-[#e65100]">
+        <select v-model="form.status" class="w-full border bg-[#2a2a2a] text-white px-3 py-1 rounded focus:outline-none focus:ring-1 focus:ring-[#e65100] focus:border-[#e65100]">
           <option value="pending">Pending</option>
           <option value="in_progress">In Progress</option>
           <option value="completed">Completed</option>

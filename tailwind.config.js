@@ -3,11 +3,18 @@ import forms from '@tailwindcss/forms';
 
 /** @type {import('tailwindcss').Config} */
 export default {
-    content: [
-        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
-        './storage/framework/views/*.php',
-        './resources/views/**/*.blade.php',
+  content: [
+    './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+    './storage/framework/views/*.php',
+    './resources/views/**/*.blade.php',
+
+    // Added
+    './resources/js/**/*.vue',
+    './resources/js/**/*.js',
+    './resources/**/*.vue',
+    './resources/**/*.js',
     ],
+
 
     safelist: [
     'bg-[#1c1c1c]',
@@ -38,8 +45,8 @@ export default {
     'hover:border-white',
     'text-[#fd4236]',
     'bg-[#1f1f1f]/90',
-    'ml-[6.8rem]',
-    'ml-[12rem]',
+    'ml-[8.7rem]',
+    'ml-[15rem]',
     'space-y-[1rem]',
     'mt-12',
     'mt-5',

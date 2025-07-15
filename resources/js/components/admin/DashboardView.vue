@@ -7,41 +7,41 @@
       
       <!-- Total Users -->
       <div
-        class="w-full md:flex-1 sm:w-[45%] cursor-pointer"
+        class="w-full sm:w-[45%] cursor-pointer"
         @click="$router.push('/dashboard/admin/users/list')"
       >
-        <div class="p-4 bg-[#222] shadow border border-[#444] text-white rounded-lg hover:bg-[#2a2a2a] transition">
-          <h3 class="text-lg font-semibold">Total Users</h3>
-          <p class="text-3xl font-bold">{{ metrics.totalUsers ?? '–' }}</p>
+        <div class="p-4 bg-[#222] shadow border border-[#777] text-white rounded-lg hover:bg-[#2a2a2a] transition">
+          <h3 class="text-md font-semibold">Total Users</h3>
+          <p class="text-xl font-bold">{{ metrics.totalUsers ?? '–' }}</p>
         </div>
       </div>
 
       <!-- Total Tasks -->
-      <div class="w-full md:flex-1 sm:w-[45%] cursor-pointer"
+      <div class="w-full sm:w-[45%] cursor-pointer"
         @click="$router.push('/dashboard/admin/tasks/view')"
       >
-        <div class="p-4 bg-[#222] shadow border border-[#444] text-white rounded-lg hover:bg-[#2a2a2a] transition">
-          <h3 class="text-lg font-semibold">Total Tasks</h3>
-          <p class="text-3xl font-bold">{{ metrics.totalTasks ?? '–' }}</p>
+        <div class="p-4 bg-[#222] shadow border border-[#777] text-white rounded-lg hover:bg-[#2a2a2a] transition">
+          <h3 class="text-md font-semibold">Total Tasks</h3>
+          <p class="text-xl font-bold">{{ metrics.totalTasks ?? '–' }}</p>
         </div>
       </div>
 
       <!-- Pending Reviews -->
-      <div class="w-full md:flex-1 sm:w-[45%]">
-        <div class="p-4 bg-[#222] shadow border border-[#444] text-white rounded-lg">
-          <h3 class="text-lg font-semibold">Pending Reviews</h3>
-          <p class="text-3xl font-bold">{{ metrics.pendingReviews ?? '–' }}</p>
+      <div class="w-full sm:w-[45%]">
+        <div class="p-4 bg-[#222] shadow border border-[#777] text-white rounded-lg">
+          <h3 class="text-md font-semibold">Pending Reviews</h3>
+          <p class="text-xl font-bold">{{ metrics.pendingReviews ?? '–' }}</p>
         </div>
       </div>
 
       <!-- Completed Tasks -->
       <div
-        class="w-full md:flex-1 sm:w-[45%] cursor-pointer"
+        class="w-full sm:w-[45%] cursor-pointer"
         @click="$router.push({ path: '/dashboard/admin/tasks/view', query: { filter: 'completed' } })"
       >
-        <div class="p-4 bg-[#222] shadow border border-[#444] text-white rounded-lg hover:bg-[#2a2a2a] transition">
-          <h3 class="text-lg font-semibold">Completed Tasks</h3>
-          <p class="text-3xl font-bold">{{ metrics.completedTasks ?? '–' }}</p>
+        <div class="p-4 bg-[#222] shadow border border-[#777] text-white rounded-lg hover:bg-[#2a2a2a] transition">
+          <h3 class="text-md font-semibold">Completed Tasks</h3>
+          <p class="text-xl font-bold">{{ metrics.completedTasks ?? '–' }}</p>
         </div>
       </div>
     </div>
