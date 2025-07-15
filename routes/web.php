@@ -6,12 +6,26 @@ use App\Http\Middleware\RoleMiddleware;
 use App\Http\Controllers\UserController;
 use Illuminate\Notifications\DatabaseNotification;
 use App\Http\Controllers\NotificationController;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Task;
 
 
 // Landing Page
-Route::get('/', fn () => view('landing'));
+Route::get('/', function () {
+    if (Auth::check()) {
+        $user = Auth::user();
+
+        return match ($user->role) {
+            'admin' => redirect()->route('dashboard.admin'),
+            'user'  => redirect()->route('dashboard.user'),
+            default => view('landing'), 
+        };
+    }
+
+    return view('landing');
+});
+
 
 // USER DASHBOARD
 
@@ -42,10 +56,9 @@ Route::middleware(['auth', RoleMiddleware::class . ':user'])->group(function () 
 
 Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function () {
     
-    // Vue SPA Entrypoint
     Route::get('/dashboard/admin', fn () => view('admin.dashboard'))->name('dashboard.admin');
 
-     // JSON endpoints for tasks (for Vue Axios calls only)
+    // JSON endpoints for tasks
     Route::prefix('dashboard/admin/tasks')->group(function () {
         Route::get('/list', [TaskController::class, 'index'])->name('admin.tasks.index'); // JSON only
         Route::post('/', [TaskController::class, 'store'])->name('admin.tasks.store');
@@ -54,7 +67,7 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function ()
         Route::get('/{task}', [TaskController::class, 'show'])->name('admin.tasks.show');
     });
 
-    // Provide user list for task assignment
+    // User lists - For tasks assignments
     Route::get('/dashboard/admin/users/json', function () {
         return \App\Models\User::where('role', 'user')->select('id', 'name', 'email')->get();
     });
@@ -71,16 +84,17 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function ()
     // delete user
     Route::delete('/admin/users/{id}', [UserController::class, 'destroy'])->name('admin.users.destroy');
 
-   Route::get('/dashboard/admin/metrics/json', function () {
-    return response()->json([
-        'totalUsers'      => User::where('role', 'user')->count(),
-        'totalTasks'      => Task::count(),
-        'completedTasks'  => Task::where('status', 'completed')->count(),
-        'pendingReviews'  => 0, // placeholder
-    ]);
-});
+    // Dash metrics
+    Route::get('/dashboard/admin/metrics/json', function () {
+        return response()->json([
+            'totalUsers'      => User::where('role', 'user')->count(),
+            'totalTasks'      => Task::count(),
+            'completedTasks'  => Task::where('status', 'completed')->count(),
+            'pendingReviews'  => 0, // placeholder
+        ]);
+    });
 
-    // Catch-all for Vue routes under /dashboard/admin/*
+    // Catch-all for Vue routes
     Route::get('/dashboard/admin/{any}', fn () => view('admin.dashboard'))
         ->where('any', '.*');
 });
