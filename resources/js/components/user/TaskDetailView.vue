@@ -1,35 +1,50 @@
 <template>
-  <div class="max-w-xl">
-    <div v-if="loading" class="text-gray-500">Loading task...</div>
+  <div class="max-w-xl w-full px-4 sm:px-0">
+    <div v-if="loading" class="text-gray-500 text-sm sm:text-base">Loading task...</div>
 
-    <div v-else-if="task" class="space-y-4 border border-[#3f3f3f] p-4 rounded-md">
-      <h2 class="text-xl text-[#e65100] font-bold mb-3">{{ task.title }}</h2>
-      <p class="text-white text-sm mb-2">{{ task.description || 'No description provided.' }}</p>
-      <p class="text-xs text-[#8b8b8b]">Due: {{ formatDate(task.deadline) }}</p>
-      <p class="text-xs text-[#8b8b8b] mb-3">Assigned By: {{ task.assigner?.name }}</p>
+    <div
+      v-else-if="task"
+      class="space-y-4 border border-[#3f3f3f] p-4 sm:p-6 rounded-md bg-[#1e1e1e] shadow"
+    >
+      <!-- Title -->
+      <h2 class="text-lg sm:text-xl text-[#e65100] font-bold mb-2 sm:mb-3">{{ task.title }}</h2>
 
-      <p v-if="successMessage" class="text-green-600 font-medium">
-        ✅ {{ successMessage }}
+      <!-- Description -->
+      <p class="text-white text-sm sm:text-base mb-2">
+        {{ task.description || 'No description provided.' }}
       </p>
 
-      <p v-if="errorMessage" class="text-red-600 font-medium">
+      <!-- Meta info -->
+      <p class="text-xs sm:text-sm text-[#8b8b8b]">Due: {{ formatDate(task.deadline) }}</p>
+      <p class="text-xs sm:text-sm text-[#8b8b8b] mb-3">Assigned By: {{ task.assigner?.name }}</p>
+
+      <!-- Feedback messages -->
+      <p v-if="successMessage" class="text-green-600 font-medium text-sm sm:text-base">
+        ✅ {{ successMessage }}
+      </p>
+      <p v-if="errorMessage" class="text-red-600 font-medium text-sm sm:text-base">
         ⚠️ {{ errorMessage }}
       </p>
 
+      <!-- Status Update Form -->
       <form @submit.prevent="updateStatus" class="space-y-3">
         <div>
           <label class="block text-sm font-medium mb-1">Update Status:</label>
-          <select v-model="task.status" class="border rounded px-3 py-2 w-full bg-[#1f1f1f] text-sm text-gray-500 focus:outline-none">
+          <select
+            v-model="task.status"
+            class="border rounded px-3 py-2 w-full bg-[#1f1f1f] text-sm text-gray-300 focus:outline-none"
+          >
             <option value="pending">Pending</option>
             <option value="in_progress">In Progress</option>
             <option value="completed">Completed</option>
           </select>
         </div>
 
+        <!-- Submit Button -->
         <button
           type="submit"
           :disabled="updating"
-          class="bg-[#e65100] hover:bg-[#2e2e2e] text-white text-sm px-4 py-1 mt-4 rounded shadow disabled:opacity-50 disabled:cursor-not-allowed"
+          class="bg-[#e65100] hover:bg-[#2e2e2e] text-white text-sm px-4 py-2 mt-3 rounded shadow disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <span v-if="updating">Updating...</span>
           <span v-else>Save Changes</span>
@@ -82,7 +97,7 @@ export default {
           this.successMessage = 'Task status updated successfully.';
           setTimeout(() => {
             this.$router.push('/dashboard/user/tasks');
-          }, 1500); // 1.5s delay before redirect
+          }, 1500);
         })
         .catch((err) => {
           console.error('Failed to update task status:', err);

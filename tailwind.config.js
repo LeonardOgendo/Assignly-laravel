@@ -49,7 +49,8 @@ export default {
     'min-w-[100px]',
     'sm:flex-row',
     'md:w-[30%]',
-    'md:flex-row'
+    'md:flex-row',
+    'sm:min-w-[45%]'
   ],
 
     theme: {

@@ -1,33 +1,33 @@
-<!-- resources/js/components/user/TasksActiveView.vue -->
 <template>
   <div class="space-y-4">
-    <h2 class="text-xl font-bold text-[#e65100] mb-4">Active Tasks</h2>
+    <h2 class="text-lg sm:text-xl font-bold text-[#e65100] mb-4">Active Tasks</h2>
 
-    <div v-if="loading" class="text-gray-400">Loading tasks...</div>
-    <div v-else-if="tasks.length === 0" class="text-gray-400">No active tasks found.</div>
+    <div v-if="loading" class="text-gray-400 text-sm sm:text-base">Loading tasks...</div>
+    <div v-else-if="tasks.length === 0" class="text-gray-400 text-sm sm:text-base">No active tasks found.</div>
 
     <ul v-else class="space-y-3">
-      <li
-        v-for="task in tasks"
-        :key="task.id"
-      >
+      <li v-for="task in tasks" :key="task.id">
         <router-link
           :to="`/dashboard/user/tasks/${task.id}`"
           class="block border border-[#3f3f3f] bg-[#1e1e1e] mb-3 p-4 rounded-md shadow-sm hover:bg-[#2a2a2a] transition"
         >
           <div class="flex justify-between items-start flex-wrap gap-2">
+            <!-- Left -->
             <div>
-              <p class="font-semibold text-white text-[0.9rem] leading-snug">{{ task.title }}</p>
-              <p class="text-xs text-gray-400 mt-1">
+              <p class="font-semibold text-white text-sm sm:text-base leading-snug">
+                {{ task.title }}
+              </p>
+              <p class="text-xs sm:text-sm text-gray-400 mt-1">
                 Due by: {{ formatDate(task.deadline) }}
               </p>
             </div>
-            <div class="flex flex-col">
+
+            <!-- Right -->
+            <div class="flex flex-col items-start sm:items-end">
               <span
                 class="text-xs px-2 py-1 rounded text-[#e65100] uppercase tracking-wide font-semibold"
               >
                 {{ task.status.replace('_', ' ') }}
-          
               </span>
               <span class="text-xs text-[#8b8b8b] mt-1">Click to Update</span>
             </div>

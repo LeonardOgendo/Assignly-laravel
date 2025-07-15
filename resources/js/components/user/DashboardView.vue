@@ -1,12 +1,13 @@
 <template>
   <div>
     <h2 class="text-xl text-[#e65100] font-semibold mb-4">Highlights</h2>
-    <section class="flex flex-wrap gap-4">
+    
+    <section class="flex flex-col sm:flex-row flex-wrap gap-4">
       <div
         v-for="card in cards"
         :key="card.title"
         @click="handleClick(card.title)"
-        class="bg-[#222] flex-1 mb-6 shadow border border-[#444] min-w-[45%] shadow-sm p-6 rounded-lg cursor-pointer hover:opacity-90 transition"
+        class="bg-[#222] w-full sm:min-w-[45%] sm:flex-1 mb-6 shadow border border-[#444] p-6 rounded-lg cursor-pointer hover:opacity-90 transition"
       >
         <h3 class="text-sm mb-1">{{ card.title }}</h3>
         <p class="text-3xl font-bold">{{ card.count }}</p>
@@ -14,6 +15,7 @@
     </section>
   </div>
 </template>
+
 
 <script>
 import axios from 'axios';
